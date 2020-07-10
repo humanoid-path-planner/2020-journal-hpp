@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
+%
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
+%
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% First comes an example EPS file -- just ignore it and
+% proceed on the \documentclass line
+% your LaTeX will extract the file if required
+\begin{filecontents*}{example.eps}
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 19 19 221 221
+%%CreationDate: Mon Sep 29 1997
+%%Creator: programmed by hand (JK)
+%%EndComments
+gsave
+newpath
+  20 20 moveto
+  20 220 lineto
+  220 220 lineto
+  220 20 lineto
+closepath
+2 setlinewidth
+gsave
+  .4 setgray fill
+grestore
+stroke
+grestore
+\end{filecontents*}
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{moreverb,url}
+\usepackage{xspace}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{yfonts}
+
+\input{new-command}
+
+%\newtheorem{definition}{Definition}
+% Insert the name of "your journal" with
+\journalname{Autonomous Robots}
+%
+\begin{document}
+
+\title{Prehensile Manipulation Planning: Modelling, Algorithms and Implementation}
+%\subtitle{Do you have a subtitle?\\ If so, write it here}
+
+%\titlerunning{Algorithmic of manipulation planning}% if too long for running head
+
+\author{Florent Lamiraux         \and
+        Joseph Mirabel %etc.
+}
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+\institute{F. Lamiraux \at
+              LAAS-CNRS \\
+              7 avenue du colonel Roche\\
+              31077 Toulouse, France\\
+              \email{florent.lamiraux@laas.fr}           %  \\
+              %             \emph{Present address:} of F. Author  %  if needed
+              \and
+              J. Mirabel \at
+              LAAS-CNRS \\
+              7 avenue du colonel Roche\\
+              31077 Toulouse, France\\
+              \email{joseph.mirabel@laas.fr}           %  \\
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+
+\maketitle
+
+\begin{abstract}
+\keywords{manipulation planning \and motion planning}
+\end{abstract}
+
+\input{hpp}
+
+\begin{acknowledgements}
+This work has been partially supported by Airbus S.A.S. in the framework of the common laboratory Rob4Fam.
+\end{acknowledgements}
+
+
+% Authors must disclose all relationships or interests that 
+% could have direct or potential influence or impart bias on 
+% the work: 
+%
+% \section*{Conflict of interest}
+% The authors declare that they have no conflict of interest.
+
+
+% BibTeX users please use one of
+\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliography{}   % name your BibTeX data base
+
+% Non-BibTeX users please use
+\bibliography{hpp}
+
+\end{document}
+% end of file template.tex
+
