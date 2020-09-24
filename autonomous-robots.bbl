@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -7,6 +7,12 @@
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Carpentier et~al.(2019)}]{pinocchio} The pinocchio c++ library : A fast and flexible
+  implementation of rigid body dynamics algorithms and their analytical
+  derivatives. In: 2019 IEEE/SICE International Symposium on System Integration
+  (SII), pp 614--619,
+  \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01866228}
 
 \bibitem[{LaValle and Kuffner(2001)}]{LavKuf01b}
 LaValle SM, Kuffner JJ (2001) Randomized kinodynamic planning. International
