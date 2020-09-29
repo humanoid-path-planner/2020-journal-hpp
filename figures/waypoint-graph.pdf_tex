@@ -1,0 +1,103 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'waypoint-graph.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1084.00003052bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.32895489)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{waypoint-graph.pdf}}%
+    \put(0.50369004,0.28827518){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(\emptyset,\emptyset)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{waypoint-graph.pdf}}%
+    \put(0.37915129,0.20488331){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{waypoint-graph.pdf}}%
+    \put(0.54520295,0.20488331){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{waypoint-graph.pdf}}%
+    \put(0.62822878,0.20488331){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{waypoint-graph.pdf}}%
+    \put(0.46217712,0.20488331){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{waypoint-graph.pdf}}%
+    \put(0.1199262,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(1,\emptyset)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{waypoint-graph.pdf}}%
+    \put(0.07103321,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{waypoint-graph.pdf}}%
+    \put(0.15405904,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{waypoint-graph.pdf}}%
+    \put(0.02859779,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{waypoint-graph.pdf}}%
+    \put(0.23708487,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(1,2)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{waypoint-graph.pdf}}%
+    \put(0.31273063,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{waypoint-graph.pdf}}%
+    \put(0.63284133,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(2,\emptyset)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{waypoint-graph.pdf}}%
+    \put(0.58210332,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{waypoint-graph.pdf}}%
+    \put(0.66512915,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{waypoint-graph.pdf}}%
+    \put(0.54520295,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{waypoint-graph.pdf}}%
+    \put(0.74630996,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(2,1)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{waypoint-graph.pdf}}%
+    \put(0.82195572,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{waypoint-graph.pdf}}%
+    \put(0.86346863,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(\emptyset,1)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{waypoint-graph.pdf}}%
+    \put(0.90498155,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{waypoint-graph.pdf}}%
+    \put(0.97140221,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{waypoint-graph.pdf}}%
+    \put(0.35424354,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$(\emptyset,2)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{waypoint-graph.pdf}}%
+    \put(0.39575646,0.03809963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{waypoint-graph.pdf}}%
+    \put(0.46217712,0.12149151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} \end{tabular}}}}%
+  \end{picture}%
+\endgroup%
