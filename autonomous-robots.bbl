@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -38,6 +38,12 @@ Mirabel J, Lamiraux F (2018) {Handling implicit and explicit constraints in
 \bibitem[{Murray et~al.(1994)}]{LMS94}
 Murray RM, Sastry SS, Zexiang L (1994) A mathematical introduction to robotic
   manipulation. CRC Press
+
+\bibitem[{Roussel et~al.(2020)}]{RouFerTai2020}
+Roussel O, Fernbach P, Ta{\"i}x M (2020) {Motion Planning for an Elastic Rod
+  using Contacts}. {IEEE Transactions on Automation Science and Engineering}
+  17(2):670--683,
+  \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01954894}
 
 \bibitem[{Schmitt et~al.(2017)}]{schmitt17icra}
 Schmitt PS, Neubauer W, Feiten W, Wurm KM, Wichert GV, Burgard W (2017)
