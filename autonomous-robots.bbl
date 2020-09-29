@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -13,6 +13,11 @@
   derivatives. 2019 IEEE/SICE International Symposium on System Integration
   (SII), pp 614--619,
   \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01866228}
+
+\bibitem[{Lamiraux and Kavraki(2001)}]{LamKav2001}
+Lamiraux F, Kavraki LE (2001) Planning paths for elastic objects under
+  manipulation constraints. The International Journal of Robotics Research
+  20(3):188--208, \urlprefix\url{https://doi.org/10.1177/02783640122067354}
 
 \bibitem[{LaValle and Kuffner(2001)}]{LavKuf01b}
 LaValle SM, Kuffner JJ (2001) Randomized kinodynamic planning. International
