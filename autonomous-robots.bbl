@@ -10,7 +10,7 @@
 
 \bibitem[{Carpentier et~al.(2019)}]{pinocchio} The pinocchio c++ library : A fast and flexible
   implementation of rigid body dynamics algorithms and their analytical
-  derivatives. In: 2019 IEEE/SICE International Symposium on System Integration
+  derivatives. 2019 IEEE/SICE International Symposium on System Integration
   (SII), pp 614--619,
   \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01866228}
 
@@ -19,10 +19,10 @@ LaValle SM, Kuffner JJ (2001) Randomized kinodynamic planning. International
   Journal of Robotics Research 20(5):378--400
 
 \bibitem[{Likhachev et~al.(2005)}]{DarpaUrbanChallenge}
-Likhachev M, Ferguson D, Gordon G, Stentz A, Thrun S (2005) Anytime dynamic a*:
-  An anytime, replanning algorithm. In: Proceedings of the Fifteenth
+Likhachev M, Ferguson D, Gordon G, Stentz A, Thrun S (2005) Anytime dynamic A*:
+  An anytime, replanning algorithm.
   International Conference on International Conference on Automated Planning
-  and Scheduling, AAAI Press, ICAPS'05, p 262–271
+  and Scheduling, ICAPS'05, p 262--271
 
 \bibitem[{Mirabel and Lamiraux(2016)}]{mirabel:hal-01360409}
 Mirabel J, Lamiraux F (2016) {Manipulation planning: building paths on
@@ -31,7 +31,7 @@ Mirabel J, Lamiraux F (2016) {Manipulation planning: building paths on
 
 \bibitem[{Mirabel and Lamiraux(2018)}]{mirabel:hal-01804774}
 Mirabel J, Lamiraux F (2018) {Handling implicit and explicit constraints in
-  manipulation planning}. In: {Robotics: Science and Systems 2018}, Pittsburg,
+  manipulation planning}. {Robotics: Science and Systems 2018}, Pittsburg,
   United States, p 9p.,
   \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01804774}
 
@@ -41,9 +41,8 @@ Murray RM, Sastry SS, Zexiang L (1994) A mathematical introduction to robotic
 
 \bibitem[{Schmitt et~al.(2017)}]{schmitt17icra}
 Schmitt PS, Neubauer W, Feiten W, Wurm KM, Wichert GV, Burgard W (2017)
-  Optimal, sampling-based manipulation planning. In: 2017 IEEE International
-  Conference on Robotics and Automation (ICRA), IEEE, pp 3426--3432,
-  \doi{10.1109/ICRA.2017.7989390},
+  Optimal, sampling-based manipulation planning. 2017 IEEE International
+  Conference on Robotics and Automation (ICRA), pp 3426--3432,
   \urlprefix\url{http://ais.informatik.uni-freiburg.de/publications/papers/schmitt17icra.pdf}
 
 \end{thebibliography}
