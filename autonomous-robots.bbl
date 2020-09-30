@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -37,6 +37,12 @@ Cort{\'e}s J, Simeon T, Laumond JP (2002) {A Random Loop Generator for Planning
   International Conference on Robotics and Automation (ICRA 2002)}, {IEEE},
   Washington, United States, pp 2141--2146,
   \urlprefix\url{https://hal.laas.fr/hal-01988698}
+
+\bibitem[{Dalibard et~al.(2009)}]{DalNakLamLau2009}
+Dalibard S, Nakhaei A, Lamiraux F, Laumond JP (2009) {Whole-Body Task Planning
+  for a Humanoid Robot: a Way to Integrate Collision Avoidance}. In: {IEEE
+  International Conference on Humanoid Robots}, Paris, France, pp 1--6,
+  \urlprefix\url{https://hal.archives-ouvertes.fr/hal-00450897}
 
 \bibitem[{Galceran and Carreras(2013)}]{coverage2013}
 Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
