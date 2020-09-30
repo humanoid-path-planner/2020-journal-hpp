@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -37,7 +37,17 @@ Guibas LJ, Latombe JC, Lavalle SM, Lin D, Motwani R (1999) A visibility-based
   \urlprefix\url{https://doi.org/10.1142/S0218195999000273},
   \eprint{https://doi.org/10.1142/S0218195999000273}
 
-\bibitem[{Kavraki et~al.(1996)
+\bibitem[{Hsu et~al.(1999)}]{HsuLatMot99}
+Hsu D, Latombe JC, Motwani R (1999) Path planning in expansive configuration
+  spaces. International Journal of Computational Geometry and Applications
+  9(4--5):495--512
+
+\bibitem[{Karaman and Frazzoli(2001)}]{KarFra2011}
+Karaman S, Frazzoli E (2001) Sampling-based algorithms for optimal motion
+  planning. The International Journal of Robotics Research 30(7):846--894,
+  \urlprefix\url{http://arxiv.org/abs/1105.1186}, \eprint{1105.1186}
+
+\bibitem[{Kavraki et~al.(1996)}]{KSLO1996}
 Kavraki LE, {\v S}vestka P, Latombe JC, Overmars M (1996) Probabilistic
   roadmaps for fast path planning in high dimensional configuration spaces.
   IEEE Transactions on Robotics and Automation 12(4):566--580
