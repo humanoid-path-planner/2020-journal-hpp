@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -8,7 +8,13 @@
   \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem[{Carpentier et~al.(2019)}]{pinocchio} The pinocchio c++ library : A fast and flexible
+\bibitem[{Canny(1983)}]{Canny1983}
+Canny J (1983) The complexity of robot motion planning. PhD thesis, Massachuset
+  Institute of Technology
+
+\bibitem[{Carpentier} et~al.(2019)]{pinocchio}
+{Carpentier} J, {Saurel} G, {Buondonno} G, {Mirabel} J, {Lamiraux} F, {Stasse}
+  O, {Mansard} N (2019) The pinocchio C++ library : A fast and flexible
   implementation of rigid body dynamics algorithms and their analytical
   derivatives. 2019 IEEE/SICE International Symposium on System Integration
   (SII), pp 614--619,
@@ -24,8 +30,8 @@ Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
   \doi{https://doi.org/10.1016/j.robot.2013.09.004},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S092188901300167X}
 
-\bibitem[{GUIBAS et~al.(1999)}]{pursuit-evasion1999}
-GUIBAS LJ, LATOMBE JC, LAVALLE SM, LIN D, MOTWANI R (1999) A visibility-based
+\bibitem[{Guibas et~al.(1999)}]{pursuit-evasion1999}
+Guibas LJ, Latombe JC, Lavalle SM, Lin D, Motwani R (1999) A visibility-based
   pursuit-evasion problem. International Journal of Computational Geometry \&
   Applications 09(04n05):471--493, \doi{10.1142/S0218195999000273},
   \urlprefix\url{https://doi.org/10.1142/S0218195999000273},
@@ -72,5 +78,12 @@ Schmitt PS, Neubauer W, Feiten W, Wurm KM, Wichert GV, Burgard W (2017)
   Optimal, sampling-based manipulation planning. 2017 IEEE International
   Conference on Robotics and Automation (ICRA), pp 3426--3432,
   \urlprefix\url{http://ais.informatik.uni-freiburg.de/publications/papers/schmitt17icra.pdf}
+
+\bibitem[{Schwartz and Sharir(1983)}]{SchSha1983}
+Schwartz JT, Sharir M (1983) On the “piano movers” problem. ii. general
+  techniques for computing topological properties of real algebraic manifolds.
+  Advances in Applied Mathematics 4(3):298 -- 351,
+  \doi{https://doi.org/10.1016/0196-8858(83)90014-3},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0196885883900143}
 
 \end{thebibliography}
