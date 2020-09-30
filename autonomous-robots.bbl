@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -138,5 +138,10 @@ Schwartz JT, Sharir M (1983) On the “piano movers” problem. ii. general
   Advances in Applied Mathematics 4(3):298 -- 351,
   \doi{https://doi.org/10.1016/0196-8858(83)90014-3},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0196885883900143}
+
+\bibitem[{Woodruff and Lynch(2017)}]{WooZacLyn2017}
+Woodruff JZ, Lynch KM (2017) Planning and control for dynamic, nonprehensile,
+  and hybrid manipulation tasks. In: 2017 IEEE International Conference on
+  Robotics and Automation (ICRA), IEEE, pp 4066--4073
 
 \end{thebibliography}
