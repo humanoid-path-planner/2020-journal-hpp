@@ -1,5 +1,6 @@
 \section{Introduction}
-This \paper describes a software platform taylored for manipulation planning.
+This \paper describes a software platform taylored for manipulation planning in
+robotics.
 The main contributions are:
 \begin{itemize}
 \item an original and general implementation of prehensile manipulation based on
@@ -10,9 +11,77 @@ The main contributions are:
 \end{itemize}
 
 The \paper is organized as follows.
-\partie~\ref{partie:preliminary} introduces some preliminary notions like kinematic chains and Lie groups that are used to model the configuration space of each joint.
+\Partie~\ref{partie:preliminary} introduces some preliminary notions like kinematic chains and Lie groups that are used to model the configuration space of each joint. \Partie~\ref{sec:constraints} introduces non linear constraints and solvers that are at the core of manipulation problem definition. \Partie~\ref{sec:manipulation-problem} defines the problem of prehensile manipulation in the general setting. \Partie~\ref{sec:manipulation-planning} provides a general algorithm that solves manipulation planning problems. Finally, \partie~\ref{sec:humanoid-path-planner} is devoted to a software platform implementing the notions introduced in the previous sections.
 
-Each \partie is implemented by one or several software packages. Instead of providing formulas for some values need to be computed, we provide a link to the C++ implementation.
+Each \partie is implemented by one or several software packages. Instead of providing formulas for some values that need to be computed, we provide a link to the C++ implementation.
+
+\section{Related work}\label{sec:related-work}
+
+Motion planning has given rise to a lot of research work for the past decades.
+The problem consists in finding a collision-free path for a given system in
+an environment populated with obstacles. The field covers a large variety of
+different applications ranging from navigation for autonomous vehicles in
+partially known environments~\cite{DarpaUrbanChallenge} to path planning for
+deformable objects~\cite{LamKav2001},\\
+\cite{RouFerTai2020} and many other applications like coverage path planning~\cite{coverage2001},\\ \cite{coverage2013}, or pursuit evasion planning~\cite{pursuit-evasion1999}.
+
+Planning motions for high dimensional robots like humanoid robots or multi-arm
+system has been proven to be of a very high complexity~\cite{SchSha1983},\\ \cite{Canny1983}. Starting in the 1990's random sampling methods have been proposed
+to solve the problem, trading the completeness property against efficiency in
+solving problem in high dimensional configuration spaces\\ \cite{KSLO1996}, \cite{HsuLatMot99}, \cite{KufLav00}. Since then, asymptotically optimal random sampling algorithms have
+been proposed~\cite{KarFra2011}.
+
+\subsection{Path planning with non-linear constraints}
+
+Some systems are subject to non-linear constraints. These non-linear constraints
+define a sub-manifold of the configuration the robot must stay on. For instance,
+legged robots that must keep contact with the ground and enforce quasi-static
+equilibrium, or multi-arm systems grasping a same object are subject to this
+type of constraints. As the volume of the constrained manifold is usually equal
+to zero, sampling random configurations satisfying the constraints is an event
+of zero probability. To sample configurations on the constrained manifold,
+\cite{DalNakLamLau2009} and \cite{berenson2011} projects random configurations using a generalization of
+Newton-Raphson algorithm. Another way to sample configurations on a constrained
+manifold consist in expressing some configuration variables with respect to
+others~\cite{Cortes2002},\\ \cite{MirLam2018} when this is possible.\\ \cite{atlasRRT} propose another method based on non-linear projection. They cover the
+constrained manifold by growing an atlas composed of local charts. This
+approximation provides a probability distribution that is closer to the uniform
+distribution over the manifold than the projection of a uniform distribution
+over the configuration space.
+
+\subsection{Manipulation planning}
+
+Manipulation planning is a particular instance of path planning were
+some objects are moved by some robots. The configuration space of the
+whole system is constrained by non-linear constrained due to the fact
+that objects cannot move by themselves and should stay in a stable
+pose when not grasped by a robot.  The accessible configuration space
+is thus a union of sub-manifold as defined in the previous
+section. Each of these manifold is moreover a foliation where each
+leaf corresponds to a stable position of an object or to a grasp of an
+object by a gripper. The geometrical structure of the problem is now
+well understood~\cite{AlaSimLau89}. Although several instances of
+manipulation problem exist like manipulation by
+pushing~\cite{BenRiv1998}, or by throwing~\cite{WooZacLyn2017}, as well as
+multicontact planning \cite{Bretl2006}, \cite{LenVaiYosKhe2013},
+\cite{TonDelPetParManMan2018}, in this paper, we are only concerned with
+prehensile manipulation planning.
+
+Papers about manipulation planning are commonly divided into several categories.
+
+Navigation Among Movable Obstacles (NAMO) \cite{wilfong1988motion}, \cite{stilman2008planning} consists in finding
+a path for a robot that needs to displace objects in order to move to a goal
+configuration. The final position of the objects does not matter in this case.
+
+Rearrangement planning \cite{ota2004rearrangement}, \cite{LIS210}, consists in finding a sequence of manipulation paths that
+move some objects from an initial pose to a final pose. The final configuration
+of the robot is not specified. A simplifying asumption is the existence of a
+monotone solution, that is a solution where each object is grasped once only and
+is moved from its initial pose to its final pose \cite{stilman2008planning}, \cite{stilman2007manipulation}, \cite{srivastavaetal2014icra}, \cite{nieuwenhuisen2008effective}, \cite{ota2004rearrangement}. They mostly use two-level methods
+composed of a symbolic or task planner and of a motion planner~\cite{lavalle2006planning}.
+
+
+\subsection{Open-source software platforms}
 
 \section{Preliminaries}\label{partie:preliminary}
 \subsection{Kinematic chains and Lie groups}
@@ -75,7 +144,7 @@ Item 3 above is called the exponential map of $\liegroup$ and is denoted by $\ex
 $SE(2)$, $SO(3)$, and $SO(2)$ are (or are isomorphic to) subgroups of $SE(3)$ and follow the same geometrical interpretation.
 
 \paragraph{Vector representations}
-Each Liegroup element is represented by a vector. Rotations are represented by
+Each Lie group element is represented by a vector. Rotations are represented by
 unit quaternions.
 
 Therefore elements of $SE(3)$ are represented by a vector in $\reals^7$ where the 3 first components represent the image of the origin (vector $\mathbf{t}$ in Equation~\ref{eq:homogeneous matrix}), the 4 last components represent a unit quaternion.
@@ -170,7 +239,7 @@ Cartesian products of Lie groups are represented by class \href{https://gepettow
   \end{itemize}
 %% end impl
 
-\section{Non-linear constraints and solvers}
+\section{Non-linear constraints and solvers}\label{sec:constraints}
 
 Some tasks require the robot to enforce some non-linear constraints. Foot contact on the ground for a humanoid robot, center of mass projection on a horizontal plane, gaze constraint are a few examples.
 
@@ -296,7 +365,7 @@ satisfying the following properties:
 
 \subsection{Solver by substitution}
 
-To optimize constraint resolution, we perform variable substitution when possible in order to reduce both the number of variables and the dimension of the resulting implicit constraint. We describe here the method that has been first published in~\cite{mirabel:hal-01804774}. Unlike in the former paper, the description we give in Algorithm~\ref{alg:ExplicitConstraintSet} is closer to the real implementation. Some links to the source code are indeed provided in the algorithm description.
+To optimize constraint resolution, we perform variable substitution when possible in order to reduce both the number of variables and the dimension of the resulting implicit constraint. We describe here the method that has been first published in~\cite{MirLam2018}. Unlike in the former paper, the description we give in Algorithm~\ref{alg:ExplicitConstraintSet} is closer to the real implementation. Some links to the source code are indeed provided in the algorithm description.
 \begin{algorithm}
   \begin{algorithmic}[1]
     \Procedure{initializeSolver}{}
@@ -409,7 +478,7 @@ Paths are implemented by class \href{https://gepettoweb.laas.fr/hpp/hpp-core/dox
 
 Projecting configurations at path evaluation has the advantage of not losing information. In return, the projection of a continuous path may be discontinuous. Before inserting a projected path in a roadmap for instance, it is therefore necessary to detect possible discontinuities. \cite{mirabel:hal-01360409} proposes two algorithms to check whether a projected path is continuous.
 
-\section{Manipulation Problem}
+\section{Manipulation Problem}\label{sec:manipulation-problem}
 
 The previous sections have presented how we model kinematic chains, configurations and velocities for a given robotic system, how configurations and paths can be projected onto a submanifold of the configuration space defined by numerical constraints.
 
@@ -552,7 +621,7 @@ h(\conf) = \left\{\begin{array}{lll}(\bar{h}_1,0,0,\bar{h}_4,\bar{h}_5)&
 (\bar{h}_1,\bar{h}_2,\bar{h}_3,\bar{h}_4,\bar{h}_5)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ outside } f_j\end{array}\right.
 \end{equation}
-It is straightforward that the above function vanishes if and only if two convex polygons are in contact.
+It is straightforward that the above function vanishes if and only if two convex polygons $o_i$ and $f_j$ are in contact and $C_{o_i}$ is inside $f_j$.
 
 As for grasps, we need to define a parameterized complement constraint for the contact constraint in order to specify the submanifold of configurations that are reachable from one configuration while keeping the object in a constant stable pose. The naive way consists in defining
 $$
@@ -566,7 +635,7 @@ $\bar{h}_2$, $\bar{h}_3$, $\bar{h}_6$ respectively represent the translation in 
 \left\{\conf\in\CS,\ \ h(\conf)=0\ \ h_{comp}(\conf) = h_{comp}(\conf_0) \right\}
 \end{equation}
 contains one object pose for each pair of polygons $(o_i,f_j)$, and there are
-$|I| . |J|$ possible combinations. This contraint is therefore not suitable to
+$|I| . |J|$ possible combinations. This constraint is therefore not suitable to
 enforce object immobility along a path since the object may jump from one pose to another one.
 
 To disambiguate the various combination of convex polygons that can be in contact, we define
@@ -598,17 +667,53 @@ Uniqueness comes from the fact that when two convex polygons are in contact,
 necessarily, $|\bar{h}_2| \leq M$,$|\bar{h}_3| \leq M$.
 % Remark about convergence of the solver and about explicit constraint.
 
-\subsection{constraint graph}
+\subsection{Merging constraint and complement into an explicit constraint}
+\label{subsec:explicit}
 
-According to Definition~\ref{def:manipulation-problem}, the set of admissible configurations is the union of sub-manifolds of the configuration space of the system. Each sub-manifold is defined by grasp and/or stable contact constraints. We call each sub-manifold a \textit{state} of the problem. A state is defined by a set of grasps and a set of stable contact poses.
+Note that when a grasp constraint and its complement are combined, they
+constitute an explicit constraint since the pose of the object grasped
+uniquely depends on the configuration of the robot that grasps.
 
-A state can be defined by a subset of active grasps, any object not grasped being in a stable contact pose. Let $\ngrippers$ and $\nhandles$ repsectively denote the number of grippers and handles. A state $\state$ is denoted by a vector of size $\ngrippers$:
+Similarly, when a placement constraint and its complement are combined, they
+constitute an explicit constraint since the pose of the object placed uniquely
+depends on the pose of the contact surface on which the object is placed. This
+latter pose
+\begin{itemize}
+\item either depends on the configuration of the robot the contact surface
+  belongs to,
+\item or is constant if the contact surface belongs to the environment.
+\end{itemize}
+In any case, the explicit expression of the object pose depends on the right
+hand side of the complement constraint that is constant along transition paths.
+
+During the construction of the constraint graph (described in Section~\ref{subsec:constraint graph}), grasp and placement
+constraints, their complements and the associated explicit constraints
+are created together and registered using method\\
+\texttt{registerConstraint} of Class
+\href{https://gepettoweb.laas.fr/hpp/hpp-manipulation/doxygen-html/classhpp_1_1manipulation_1_1graph_1_1Graph.html}{\texttt{ConstraintGraph}}.
+
+\subsection{Constraint Graph}\label{subsec:constraint graph}
+
+According to Definition~\ref{def:manipulation-problem}, the set of admissible configurations is the union of sub-manifolds of the configuration space of the system. Each sub-manifold is defined by grasp and/or stable contact constraints. We call each sub-manifold a \textit{state} of the problem.
+
+A state can be defined by a subset of active grasps, any object not grasped being in a stable contact pose. Let $\ngrippers$, $\nhandles$, and $\nobjects$ respectively denote the number of grippers, handles, and objects.
+
+We denote by
+\begin{itemize}
+\item $grasp_{ij}\ i\in\{1,\cdots,\ngrippers\}\ j\in\{1,\cdots,\nhandles\}$ the grasp constraint of handle $j$ by gripper $i$,
+\item $grasp_{ij}/comp\ i\in\{1,\cdots,\ngrippers\}\ j\in\{1,\cdots,\nhandles\}$ the complement constraint of the latter,
+\item $place_{i}\ i\in\{1,\cdots\nobjects\}$ the placement constraint of object $i$,
+\item $place_{i}/comp\ i\in\{1,\cdots\nobjects\}$ the complement constraint of the latter.
+\end{itemize}
+
+
+A state $\state$ is denoted by a vector of size $\ngrippers$:
 \begin{equation}\label{eq:state}
 \state = \left(h_1,\cdots,h_{\ngrippers}\right)
 \end{equation}
 where $h_i\in\{\emptyset,1,\cdots,\nhandles\}$ denotes the id of the handle grasped by gripper $i$; $h_i=\emptyset$ means that gripper $i$ does not grasp any handle.
 
-\paragraph{Number of states:} note that for $i\in\{1,\cdots,\nhandles\}$ the number of occurences of $i$ in $\state$ is at most 1: a handle cannot be grasped by several grippers. Note also that the number of occurences of $\emptyset$ is not limited: several grippers may hold nothing. Let $m$ be a non-negative integer not greater than $\ngrippers$ and than $\nhandles$ and let us count the number of states with $m$ handles grasped. The number of subset of $m$ handles among $\nhandles$ is equal to $\frac{\nhandles!}{(\nhandles-m)!m!}$. And the number of ways of dispatching them among the $\ngrippers$ grippers is equal to $\frac{\ngrippers!}{(\ngrippers-m)!}$. Thus, the total number of states is equal to
+\paragraph{Number of states:} note that for $i\in\{1,\cdots,\nhandles\}$ the number of occurences of $i$ in $\state$ is at most 1: a handle cannot be grasped by several grippers. Note also that the number of occurences of $\emptyset$ is not limited: several grippers may hold nothing. Let $m$ be a non-negative integer not greater than $\ngrippers$ nor $\nhandles$ and let us count the number of states with $m$ handles grasped. The number of subset of $m$ handles among $\nhandles$ is equal to $\frac{\nhandles!}{(\nhandles-m)!m!}$. And the number of ways of dispatching them among the $\ngrippers$ grippers is equal to $\frac{\ngrippers!}{(\ngrippers-m)!}$. Thus, the total number of states is equal to
 $$
 \sum_{m=0}^{\min(\ngrippers,\nhandles)} \frac{\nhandles!}{(\nhandles-m)!m!} \frac{\ngrippers!}{(\ngrippers-m)!}
 $$
@@ -637,7 +742,7 @@ $$
   \end{itemize}
 \end{definition}
 
-\subsection{Example}
+\subsection{Example}\label{subsec:ur3-cylinder}
 
 \begin{figure}
   \begin{center}
@@ -650,28 +755,16 @@ $$
   Bottom: the corresponding constraint graph. Names of states follow Expression~(\ref{eq:state}): for instance, $(\emptyset,1)$ means that gripper of robot 2 grasps handle 1 of the cylinder. In this state, there is no placement constraint.}
   \label{fig:2ur3-cylinder}
 \end{figure}
-To illustrate the notions exposed in the previous sections, let us consider an example of two UR3 robots manipulating a cylinder illustrated in Figure~\ref{fig:2ur3-cylinder}. The robot is equipped with one gripper attached to the end-effector. The cylinder is equipped with two handles and with two square contact surfaces corresponding to the top and bottom faces of the cylinder.
-
-Grasp constraints are denoted by
-$$
-grasp_{ij} \mbox{ where } i,j\in\{1,2\}.
-$$
-Grasp complement constraints are denoted by
-$$
-grasp_{ij}/comp \mbox{ where } i,j\in\{1,2\}.
-$$
-
-$i$ is the index of the gripper $j$ is the index of the handle. The flag of the handles is
+To illustrate the notions exposed in the previous sections, let us consider an example of two UR3 robots manipulating a cylinder illustrated in Figure~\ref{fig:2ur3-cylinder}. The robot is equipped with one gripper attached to the end-effector. The cylinder is equipped with two handles and with two square contact surfaces corresponding to the top and bottom faces of the cylinder. $\ngrippers=2,\nhandles=2,\nobjects=1$. The flag of the handles are
 $$(\true,\true,\true,\false,\true,\true).$$
 Therefore grasp constraints are of dimension 5 and keep the rotation of the gripper around the cylinder axis free.
-The object placement constraint is denoted by $place$ and the complement by $place/comp$.
 \begin{table}
   \begin{center}
     \begin{tabular}{|p{.44\linewidth}|p{.44\linewidth}|}
       \hline
       state & active constraints\\
       \hline
-      $(\emptyset,\emptyset)$ & $place$ \\
+      $(\emptyset,\emptyset)$ & $place_1$ \\
       $(j,\emptyset),\,j\in\{1,2\}$ & $grasp_{1j}$\\
       $(\emptyset,j),\,j\in\{1,2\}$ & $grasp_{2j}$\\
       $(i,j)\,i,j\in\{1,2\}$ & $grasp_{1i},grasp_{2j}$\\
@@ -681,7 +774,7 @@ The object placement constraint is denoted by $place$ and the complement by $pla
   \caption{State constraints.}
   \label{tab:state-constraints}
 \end{table}
-Table~\ref{tab:state-constraints} indicates which constraints are active for each state.
+Table~\ref{tab:state-constraints} indicates which constraints are active for each state. Table~\ref{tab:transition-constraints} indicates which constraints are active for each transition.
 
 \begin{table}
   \begin{center}
@@ -689,21 +782,24 @@ Table~\ref{tab:state-constraints} indicates which constraints are active for eac
       \hline
       transition & belongs to & additional constraints\\
       \hline
-      $(\emptyset,\emptyset)\rightarrow (i,\emptyset)$ & $(\emptyset,\emptyset)$ & $place/comp$\\
-      $(\emptyset,\emptyset)\rightarrow (\emptyset,i)$ & $(\emptyset,\emptyset)$ & $place/comp$\\
+      $(\emptyset,\emptyset)\rightarrow (i,\emptyset)$ & $(\emptyset,\emptyset)$ & $place_1/comp$\\
+      $(\emptyset,\emptyset)\rightarrow (\emptyset,i)$ & $(\emptyset,\emptyset)$ & $place_1/comp$\\
       $(i,\emptyset)\rightarrow(i,j)$ & $(i,\emptyset)$ & $grasp_{1i}/comp$\\
       $(\emptyset,j)\rightarrow(i,j)$ & $(\emptyset,j)$ & $grasp_{2j}/comp$\\
       \hline
     \end{tabular}
   \end{center}
-  \caption{Transition constraints: $i,j$ are either 1 or 2. column "belongs to" means that paths along the transition belong to the state.}
+  \caption{Transition constraints: $i,j$ are either 1 or 2. column
+    "belongs to" means that paths along the transition belong to the
+    state, \textit{i.e.} the transition contains the state
+    constraints.}
   \label{tab:transition-constraints}
 \end{table}
 
 \subsection{Automatic construction}
 
 \begin{algorithm}
-  \algblock[globalVariable]{GlobalVariable}{EndGlobalVariable}
+  \algblockdefx[globalVariable]{GlobalVariable}{EndGlobalVariable}{\textbf{global variables}}{}
   \begin{algorithmic}[1]
     \GlobalVariable
     \State{$\nobjects$}\Comment{number of objects}
@@ -712,9 +808,9 @@ Table~\ref{tab:state-constraints} indicates which constraints are active for eac
     \EndGlobalVariable
     \Function{buildConstraintGraph}{}
     \State{$\mathcal{G}\gets\left[0,\cdots,\ngrippers-1\right]$}
-    \Comment{gripper indices}
+    \Comment{list of gripper indices}
     \State{$\mathcal{H}\gets\left[0,\cdots,\nhandles-1\right]$}
-    \Comment{handle indices}
+    \Comment{list of handle indices}
     \State {$Gr\gets\left[\emptyset,\cdots,\emptyset\right]$}\Comment{list of size $\ngrippers$}
     \State \Call{recurse}{$\mathcal{G}$,$\mathcal{H}$,$Gr$}
     \EndFunction
@@ -729,21 +825,23 @@ Table~\ref{tab:state-constraints} indicates which constraints are active for eac
     \State{$\mathcal{H}^{\prime}\gets\mathcal{H}\setminus\{h\}$}
     \State{$Gr^{\prime}\gets Gr$}
     \State{$Gr^{\prime}[g]\gets h$}
+    \State{$isNewState\gets\mathbf{not}\ $\Call{existState}{$Gr^{\prime}$}}
     \State{\Call{createState}{$Gr^{\prime}$}}
     \State{\Call{createTransition}{$Gr$, $Gr^{\prime}$}}
-    \State{\Call{recurse}{$\mathcal{G}^{\prime}$,$\mathcal{H}^{\prime}$,$Gr^{\prime}$}}
+    \If{$isNewState$}{\Call{recurse}{$\mathcal{G}^{\prime}$,$\mathcal{H}^{\prime}$,$Gr^{\prime}$}}\label{cond:recurse}
+    \EndIf
     \EndFor
     \EndFor
     \EndFunction
     \Function{createState}{$Gr$}
     \If{\Call{existState}{$Gr$}}\State{\Return}\EndIf
     \State{$\state\gets\mbox{ new state}$}
-    \State{$\state.Pl\gets\left[\true,...,\true\right]$}\Comment{list of size $\nobjects$}
+    \State{$\state.Pl\gets\left[\true,...,\true\right]$}\Comment{list of size $\nobjects$}\label{beg:comp-placement-constraints}
     \For{$g\mbox{ in } \left[0,\cdots,\ngrippers-1\right]$}
     \State{$h\gets Gr[g]$}
     \State{$\state.Pl[\Call{objectIndex}{h}]\gets\false$}
     \State{$\state$.add(\Call{graspConstraint}{g,h})}
-    \EndFor
+    \EndFor\label{end:comp-placement-constraints}
     \For{$o\mbox{ in }\left[0,\cdots,\nobjects\right]$}
     \If{$\state.Pl[o]$}
     \State{$\state$.add(\Call{placeConstraint}{$o$}})
@@ -759,57 +857,523 @@ Table~\ref{tab:state-constraints} indicates which constraints are active for eac
     \State{$\transition$.add(\Call{graspConstraintComp}{g,h})}
     \EndFor
     \For{$o\mbox{ in }\left[0,\cdots,\nobjects\right]$}
+    \label{beg:set-placement-constraints}
     \If{$\state_1.Pl[o]$}
     \State{$\transition$.add(\Call{placeConstraint}{$o$}})
     \State{$\transition$.add(\Call{placeConstraintComp}{$o$}})
     \EndIf
-    \EndFor
-    \EndFunction
-    \Function{existState}{$Gr$}
-    \Comment{Return $\true$ if a state has already been created for the set of
-    grasps given as input.}
-    \EndFunction
-    \Function{state}{$Gr$}
-    \Comment{Return the state created with the set of grasps given as input.}
-    \EndFunction
-    \Function{objectIndex}{$h$}
-    \Comment{Return the index of the object handle $h$ belongs to.}
+    \EndFor\label{end:set-placement-constraints}
     \EndFunction
   \end{algorithmic}
   \caption{Recursive Construction of the constraint graph. The
-    construction starts by the state with no grasp. Call to recurse
-    function loops over the available grippers and handles and create
-    states with one more grasp, and a transition to these new
-    states. In each state, a placement constraint is added for each
-    object of which no handle is grasped. Variables $\mathcal{G}$ and
-    $\mathcal{H}$ contain the indices of the free grippers and
-    handles. Variable $Gr$ stores the current set of grasps following
-    Expression~(\ref{eq:state}). Functions {\scriptsize GRASP}{\small C}{\scriptsize ONSTRAINT}, {\scriptsize GRASP}{\small C}{\scriptsize ONSTRAINT}{\small C}{\scriptsize OMP},{\scriptsize PLACE}{\small C}{\scriptsize ONSTRAINT}, {\scriptsize PLACE}{\small C}{\scriptsize ONSTRAINT}{\small C}{\scriptsize OMP} build grasp, placement constraints and their complements as defined in sections~\ref{subsec:grasp} and ~\ref{subsec:placement}.}
+    construction starts by the state with no grasp. Call to
+    {\scriptsize RECURSE} function loops over the available grippers
+    and handles and creates states with one more grasp, and a
+    transition to these new states. In each state, a placement
+    constraint is added for each object of which no handle is
+    grasped. Variables $\mathcal{G}$ and $\mathcal{H}$ contain the
+    indices of the free grippers and handles. Variable $Gr$ stores the
+    current set of grasps following Expression~(\ref{eq:state}).
+    Lines~\ref{beg:comp-placement-constraints} to
+    \ref{end:comp-placement-constraints}
+    compute which objects are not grasped.
+    Lines~\ref{beg:set-placement-constraints} to
+    \ref{end:set-placement-constraints} insert placement constraints in the
+    state for those objects. Line~\ref{cond:recurse} recurses only if the
+    lastest node reached is new.}
   \label{algo:constraintGraphFactory}
 \end{algorithm}
 
 Given a set of grippers, handles and objects, the constraint graph can be constructed automatically. \href{https://github.com/humanoid-path-planner/hpp-manipulation-corba/blob/5af1b3bad68e8c339d5f42eb72173d7356504532/src/hpp/corbaserver/manipulation/constraint_graph_factory.py#L187}{Here} is an implementation in python. Algorithm~\ref{algo:constraintGraphFactory} describes this implementation.
+Functions
+\begin{itemize}
+\item {\scriptsize GRASP}{\small C}{\scriptsize ONSTRAINT},
+\item {\scriptsize GRASP}{\small C}{\scriptsize ONSTRAINT}{\small C}{\scriptsize OMP}, build grasp constraint and complement constraint as defined in Section~\ref{subsec:grasp},
+\item {\scriptsize PLACE}{\small C}{\scriptsize ONSTRAINT},
+\item {\scriptsize PLACE}{\small C}{\scriptsize ONSTRAINT}{\small C}{\scriptsize OMP} build placement constraints and complement as defined in Section~\ref{subsec:placement},
+\item {\scriptsize EXIST}{\small S}{\scriptsize TATE}($Gr$) returns $\true$ if a state has already been created for the set of grasps given as input,
+\item{\scriptsize STATE}($Gr$) returns the state created with the set of grasps given as input,
+\item {\scriptsize OBJECT}{\small I}{\scriptsize NDEX}($h$) returns the index of the object handle $h$ belongs to.
+\end{itemize}
 
-\section{Manipulation planning}
+\section{Manipulation planning}\label{sec:manipulation-planning}
 
 In this section, we show how the constraint graph defined in the previous section is used to plan collision-free manipulation paths. Although we are working on an extension of Algorithm RMR*~\cite{schmitt17icra} to several grippers, objects and handles, the only manipulation planning algorithm available up to now in HPP is an extension of RRT algorithm described in the next section.
 
-\subsection{M-RRT}
+\subsection{Manipulation-RRT}
 
-Manipulation Randomly exploring Random Tree is an extension of RRT algorithm~\cite{LavKuf01b} that grows trees in the free configuration space, exploring the different states of the manipulation problem. Algorithm~\ref{algo:M-RRT} describes the algorithm implemented \href{https://github.com/humanoid-path-planner/hpp-manipulation/blob/16369aa291ab1b17ef6176ae8b8b2512b5e6fff7/src/manipulation-planner.cc#L159}{here}.
+Manipulation Randomly exploring Random Tree is an extension of RRT algorithm~\cite{LavKuf01b} that grows trees in the free configuration space, exploring the different states of the manipulation problem. Algorithm~\ref{algo:M-RRT} describes the algorithm implemented in C++ \href{https://github.com/humanoid-path-planner/hpp-manipulation/blob/16369aa291ab1b17ef6176ae8b8b2512b5e6fff7/src/manipulation-planner.cc#L159}{here}.
+
+After initializing the roadmap with the initial and goal configurations, the algorithm iteratively calls method {\scriptsize ONE}{\small S}{\scriptsize TEP} until a solution path is found or the maximum number of iterations is reached.
+This latter method shoots a random configuration (line 6) and for each connected component of the roadmap and each state of the constraint graph, extends the nearest node in the direction of the random configuration (lines 7--10). For each successful extension, the end of the extension path is stored for later connection (line 11). After the extension step, the algorithm tries to connect new nodes to other connected components using two strategies:
+\begin{enumerate}
+\item function \TRYCONNECTNEWNODES calls method \CONNECT between all pairs of new nodes,
+\item function \TRYCONNECTTOROADMAP tries to connect each new node to the nearest nodes in other connected components of the roadmap also using function \CONNECT.
+\end{enumerate}
+Function \CONNECT attempts to connect two configurations in two states. First, it checks whether there exists a transition between the states. If so, it checks that the right hand side of the transition parameterized constraints is the same for both configurations (up to the error threshold). Then it returns the linear interpolation between the configurations, projected onto the submanifold defined by the transition constraints. If the path is in collision, only the collision-free part at the beginning of the path is returned.
+
+Function \EXTEND attempts to generate a path from a configuration in a state to another state following a random transition. Similarly as for function \CONNECT, the path is projected onto the sub-manifold defined by the transition constraints. The end configuration is obtained by applying to the random configuration the constraints of the transition and of the goal state.
 \begin{algorithm}
   \begin{algorithmic}[1]
-    \Function{oneStep}{}
-    $q_{rand}\gets$\Call{randomConfig}{}
+    \Function{initializeRoadmap}{$\conf_{init}$,$\conf_{goal}$}
+    \State$\roadmap\gets\mbox{ new roadmap}$
+    \State{$\roadmap$.\Call{addNode}{$\conf_{init}$};
+      $\roadmap$.\Call{addNode}{$\conf_{goal}$}}
+    \EndFunction
+    \Function{oneStep}{$\roadmap$}
+    \State{$newNodes\gets$ empty list}
+    \State{$\conf_{rand}\gets$\Call{shootRandomConfig}{ }}
+    \For{$cc$ in connected components of $\roadmap$}
+    \For{$s$ in constraint graph states}
+    \State{$\conf_{near}\gets$\Call{nearestNode}{$cc$,$s$,$\conf_{rand}$}}
+    \State{$p\gets$\Call{extend}{$s$, $\conf_{near}$, $\conf_{rand}$}}
+    \If{$p$}$\,newNodes\gets\,newNodes\cup\{\mbox{end of}\,p\}$\EndIf
+    \EndFor
+    \EndFor
+    \State{$nc\gets$\Call{tryConnectNewNodes}{$\roadmap$, $newNodes$}}
+    \If{$nc=0$}
+    \State{\Call{tryConnectToRoadmap}{$\roadmap$,$newNodes$}}
+    \EndIf
+    \EndFunction
+    \Function{tryConnectNewNodes}{$\roadmap$, $nodes$}
+    \For{$\conf_1,\conf_2\mbox{ in } nodes,\ \conf_1\not=\conf_2$}
+    \State{$s_1\gets\Call{state}{\conf_1};s_2\gets\Call{state}{\conf_2}$}
+    \State{$p\gets\Call{Connect}{\conf_1,s_1,\conf_2,s_2}$}
+    \If{$p$}
+    \State{$\roadmap$.\Call{addEdge}{$\conf_1$,$\conf_2$,$p$}}
+    \EndIf
+    \EndFor
+    \EndFunction
+    \Function{tryConnectToRoadmap}{$\roadmap$,$nodes$}
+    \For{$\conf_1\mbox{ in } nodes$}
+    \State{$s_1\gets\Call{state}{\conf_1}$}
+    \For{$cc$ in connected components of $\roadmap$}
+    \If{$\conf_1\notin cc$}
+    \State{$near\gets K\mbox{ nearest neighbors of }\conf_1\mbox{ in }cc$}
+    \For{$\conf_2\mbox{ in }near$}
+    \State{$s_2\gets\Call{state}{\conf_2}$}
+    \State{$p\gets\Call{Connect}{\conf_1,s_1,\conf_2,s_2}$}
+    \If{$p$}{$\roadmap$.\Call{addEdge}{$\conf_1,\conf_2$}}\EndIf
+    \EndFor
+    \EndIf
+    \EndFor
+    \EndFor
+    \EndFunction
+    \Function{extend}{$s$, $\conf_{near}$, $\conf_{rand}$}
+    \State{$solver\gets$\Call{SolverBySubstitution}{}}
+    \State{$\transition\gets$ random edge getting out of $s$}
+    \State{$g\gets$ state $\transition$ points to}
+    \For{$c$ in $g$.\Call{constraints}{ }}
+    \State{$solver$.\Call{addConstraint}{$c(\conf)=0$}}
+    \EndFor
+    \For{$c$ in $\transition$.\Call{constraints}{ }}
+    \State{$solver$.\Call{addConstraint}{$c(\conf) = c(\conf_{near})$}}
+    \EndFor
+    \State{$\conf_{target}\gets solver$.\Call{solve}{$\conf_{rand}$}}
+    \If{$\conf_{target}$}
+    \State{$p\gets$ linear interpolation from $\conf_{near}$ to $\conf_{target}$}
+    \State{$p$.\Call{addConstraints}{$\transition$.{\scriptsize CONSTRAINTS}()}}
+    \EndIf
+    \If {$p$ collision free} {\Return $p$}
+    \Else { \Return collision-free portion of $p$ starting at $\conf_{near}$}
+    \EndIf
+    \EndFunction
+    \Function{connect}{$\conf_1,s_1,\conf_2,s_2$}
+    \State{parameter $\epsilon>0$}
+    \State{$p\gets$ linear interpolation from $\conf_1$ to $\conf_2$}
+    \State{$\transition\gets$\Call{transition}{$s_1$,$s_2$}}
+    \If{not $\transition$}{ \Return $\emptyset$}
+    \EndIf
+    \For{$c$ in $\transition$.\Call{constraints}{ }}
+    \If{$\|c(\conf_2) - c(\conf_1)\|\geq\epsilon$}{ \Return $\emptyset$}
+    \Else
+    \State{$p$.\Call{addConstraint}{$c(\conf)=c(\conf_1)$}}
+    \EndIf
+    \EndFor
+    \If {$p$ in collision} { \Return $\emptyset$}
+    \EndIf
+    \State{\Return $p$}
     \EndFunction
   \end{algorithmic}
-  \caption{}
+  \caption{Manipulation RRT algorithm iteratively calls method {\scriptsize ONE}{\small S}{\scriptsize TEP} until a solution path is found or the maximum number of iterations is reached.}
   \label{algo:M-RRT}
 \end{algorithm}
 
-\subsection{Waypoint edges}
+\subsection{Examples}
 
-\subsection{Crossed foliation issue}
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/example-qrand-2.png}
+    \includegraphics[width=\linewidth]{figures/example-q0-2.png}
+    \includegraphics[width=\linewidth]{figures/example-q-wp-2.png}
+  \end{center}
+  \caption{Example of extension along a transition of the constraint graph. Top
+    $\conf_{rand}$, middle $\conf_{near}$, bottom $\conf_{target}$.
+  }
+  \label{fig:MRRT-extension}
+\end{figure}
 
-\subsection{Prototyping dedicated algorithms}
+In this section, we illustrate the algorithm described in the previous section with two examples. Figure~\ref{fig:MRRT-extension} illustrates function \EXTEND defined in the previous section on the example of Figure~\ref{fig:2ur3-cylinder}.
+The system considered is
+composed of two robots and a cylinder with two handles. The top picture displays
+$\conf_{rand}$. The middle picture displays $\conf_{near}$ that lies in state
+$(\emptyset,\emptyset)$. The transition that is randomly selected
+(Algorithm~\ref{algo:M-RRT}, line 33) is
+$(\emptyset,\emptyset) \rightarrow (1,\emptyset)$, meaning that robot 1 will
+try to grasp handle 1. According to tables~\ref{tab:state-constraints} and
+\ref{tab:transition-constraints}, the constraints of the transition are
+$(place_1, place_1/comp)$.
+The first one is of type~(\ref{eq:convex-shape-contact}), the second one is
+of type~(\ref{eq:convex-shape-contact-complement}) and is parameterized: the
+right hand side uniquely defines the contact surfaces (object and robot or environment) and the position of the
+object on the contact surface. $\conf_{target}$ is obtained by projecting $\conf_{rand}$
+onto the manifold defined by the following constraints
+(Algorithm~\ref{algo:M-RRT}, lines 35--39):
+\begin{itemize}
+\item $place_1$, $place_1/comp$ that belong to the transition,
+\item $grasp_{11}$ that belongs to the goal state.
+\end{itemize}
+According to Section~\ref{subsec:explicit}, the two first constraints can be
+replaced by an explicit constraint: the position of the object can be deduced
+from the right hand side of $place_1/comp$ that is initialized with configuration
+$\conf_{near}$.
+
+After substitution, the set of constraints is reduced to an implicit constraint
+on the configuration variables of robot 1 (6 variables). The solution found by the solver, $\conf_{target}$ (line 39) is displayed in
+Figure~\ref{fig:MRRT-extension} bottom. Notice that as expected, the position of the object is the same in $\conf_{target}$ as in $\conf_{near}$.
+
+The path returned by function \EXTEND is the linear interpolation between
+$\conf_{near}$ and $\conf_{target}$ constrained with $place_1$, $place_1/comp$ with
+right hand side initialized with $\conf_{near}$. As explained earlier, this
+constraint is replaced by an explicit constraint. Let us notice that the linear interpolation already satisfies the constraint, but this is not always the case.
+
+If the latter path is in collision, the collision-free part of the path starting
+at $\conf_{near}$ is returned.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=.75\linewidth]{figures/example-qtarget-1.png}
+    \includegraphics[width=.75\linewidth]{figures/example-connect-q1.png}
+  \end{center}
+  \caption{Method \CONNECT applied to two configurations.}
+  \label{fig:connect}
+\end{figure}
+
+Figure~\ref{fig:connect} illustrates method \CONNECT applied to two configurations $\conf_1$ (top) and $\conf_2$ (bottom). Both configurations lie in state $(1,\emptyset)$\footnote{Note that $\conf_1$ lies at the intersection between states
+  $(\emptyset,\emptyset)$ and $(1,\emptyset)$.}. The transition between those states $(1,\emptyset)\rightarrow(1,\emptyset)$ contains the following constraints (tables~\ref{tab:state-constraints} and \ref{tab:transition-constraints}):
+\begin{itemize}
+\item $grasp_{11}/comp$, $grasp_{11}$.
+\end{itemize}
+Method \CONNECT checks that the right hand side of $grasp_{11}/comp$ is the same
+for $\conf_1$ and $\conf_2$, up to the error threhold (Algorithm~\ref{algo:M-RRT}, line~51). From a geometrical point of view, this means that the orientation of the cylinder along its axis, with respect to the gripper is the same in both configurations. Let us recall that the right hand side of $grasp_{11}$ is 0. If the condition is satisfied, the method builds the linear interpolation between $\conf_1$ and $\conf_2$ with the explicit constraint equivalent to $\{grasp_{11}/comp$, $grasp_{11}\}$ and returns this path if it is collision-free.
+
+\subsection{Waypoint transitions}
+
+\begin{figure}
+  \begin{center}
+    \def\svgwidth {\linewidth}
+    {
+      \graphicspath{{./figures/}}
+      \input {figures/grasp-waypoint.pdf_tex}
+    }
+    \includegraphics[width=.8\linewidth]{figures/dual-grasp-pregrasp.png}
+  \end{center}
+  \caption{Along a transition where an object already grasped is grasped by
+    an additional gripper, an intermediate waypoint state called
+    \textit{pregrasp} (pg) is added. This intermediate state is represented by
+    an hexagonal box. $\gripper{2} > \handle{2}|(1,\emptyset)$ means that
+    gripper 2 is going to grasp handle 2 from the state where gripper 1 grasps
+    handle 1. The constraints associated to this waypoint state are the
+    constraints of the state with the least active grasps (here $(1,\emptyset)$)
+    and the pregrasp constraint corresponding to the grasp that is added in
+    the node with the most active grasps (here $pregrasp_{22}$). The transition
+    constraints are the same for all transitions (in red) and the same as
+    the loop transition of the state with the least active grasps (in blue: here
+    $grasp_{11}$ and $grasp_{11}/comp$).}
+  \label{fig:pregrasp-grasp}
+\end{figure}
+\begin{figure}
+  \centerline {
+    \parbox {.69\linewidth} {
+      \def\svgwidth {\linewidth}
+      {
+        \graphicspath{{./figures/}}
+        \input {figures/placement-waypoints.pdf_tex}
+      }
+    }
+    \parbox {.3\linewidth} {
+      \begin {tabular}{c}
+      \includegraphics [width=.9\linewidth] {figures/placement-pregrasp-ur3.png}\\
+      \includegraphics [width=.9\linewidth] {figures/placement-grasp-ur3.png}\\
+      \includegraphics [width=.9\linewidth] {figures/placement-preplace-ur3.png}\\
+      \end{tabular}
+    }
+  }
+  \caption{Along a transition where an object in placement is grasped
+    by a gripper, we add three waypoint states called
+    \textit{pregrasp} (pg) where the gripper is above the object,
+    \textit{graps-placement} (gp) where the object is grasped but
+    still in placement and \textit{preplacement} (pp) where the object
+    is grasped above the contact surface. All transitions between the
+    state with the least active grasps and the waypoint $gp$ have the
+    same constraints as the loop transition of the state with the
+    least active grasps (here: $place_1$ and $place_1/comp$ in
+    blue). All transitions between the waypoint state $gp$ and the
+    state with the most active grasps have the same constraints as the
+    loop transition of the state with the most active grasps (here: $grasp_{11}$
+    and $grasp_{11}/comp$ in red).}
+  \label{fig:pregrasp-placement}
+\end{figure}
+
+A prehensile manipulation motion contains by definition configurations that are in contact:
+\begin{itemize}
+\item between gripper and object during grasp,
+\item between object and contact surface when the object lies in a stable pose.
+\end{itemize}
+Contacts are difficult to handle by classical collision detection libraries and are often considered as collisions. To overcome this issue, we keep the gripper open during grasp, and objects slightly above contact surfaces in stable poses.
+
+Even with these simple tricks however, solution paths to a manipulation problem need to come close to collision, raising the well-known issue of narrow passages.
+
+To cope with this issue, we define intermediate states in the
+constraint graph called waypoint states. These states are inserted
+between the regular states of the constraint graph. They require some prior
+definitions.
+
+\begin{definition}\label{def:pregrasp}\textbf{pregrasp}
+  A \emph{pregrasp} is a numerical constraint $h$ over $\CS$, defined by
+  \begin{itemize}
+  \item a gripper $\gripper$,
+  \item a handle $\handle$.
+  \item a non-negative real number $\Delta$.
+  \end{itemize}
+  Let $\bar{h}$ be the smooth mapping from $\CS$ to $\reals^6$ that maps to any configuration $\conf$ of the system, the expression
+  \begin{equation}\label{eq:barh-pregrasp}
+    \bar{h}(\conf) = \log_{\reals^3\times SO(3)}\left(\gripper^{-1}(\conf) \handle(\conf)\right) - \left(\Delta\, 0\, 0\, 0\, 0\, 0\right)^T.
+  \end{equation}
+  $h(\conf)$ is obtained by extracting from $\bar{h}$ the components the values of which are \true in the handle flag.
+\end{definition}
+Note that when this constraint is satisfied, the handle is translated
+along $x$ axis by distance $\Delta$ compared to a configuration
+satisfying the grasp constraint. The value of $\Delta$ depends on the geometry
+of the gripper and object. Clearance values are associated to the handle: $cl_{o}$ and to the gripper: $cl_{g}$. $\Delta$ is defined as $cl_{o}+cl_{g}$. The
+clearance parameters are part of the definition of the gripper and handle and
+are stored in the SRDF files.
+
+\begin{definition}\label{def:preplacement}\textbf{preplacement}
+  A preplacement is a numerical constraint $h$ over $\CS$, defined by
+  \begin{itemize}
+  \item $(o_i)_{i\in I}$ a set of convex polygons attached to an object,
+  \item $(f_j)_{j\in J}$ a set of convex polygons attached to the environment or to a mobile part of a robot that can receive objects (mobile robot for instance),
+  \item a non-negative real number $\Delta$.
+  \end{itemize}
+  with the same notation as in Section~\ref{subsec:placement}, we define $i$ and
+  $j$ as the indices that minimize $d(f_j,o_i)$~
+  (Equation~(\ref{eq:contact-distance})), and
+  \begin{equation}\label{eq:convex-shape-contact-hbar-preplacement}
+    \bar{h}(\conf) = \log_{\reals^3\times SO(3)} \left(f_{j}(\conf)^{-1}o_i(\conf)\right) + \left(\Delta\,0\,0\,0\,0\,0\right)^T
+  \end{equation}
+  The left hand side of the preplacement constraint is defined by Equation~
+  (\ref{eq:convex-shape-contact}).
+\end{definition}
+Note that when this constraint is satisfied, the object is translated of a
+distance $\Delta$ along the normal to the contact surface.
+
+We denote by
+\begin{itemize}
+\item $pregrasp_{ij}\ i\in\{1,\cdots,\ngrippers\}\ j\in\{1,\cdots,\nhandles\}$ the pregrasp constraint of handle $j$ by gripper $i$,
+\item $preplace_{i}\ i\in\{1,\cdots\nobjects\}$ the preplacement constraint of object $i$.
+\end{itemize}
+
+We replace the transitions of the constraint graph defined in
+Section~\ref{subsec:constraint graph} by a sequence of intermediate
+states and transitions as follows.
+
+Following definition~\ref{def:neighboring-states}, if two states $\state_1$
+and $\state_2$ are neighbors, one of them contains an additional grasp with
+respect to the other one. Without loss of generality, let us consider that
+$\state_2$ contains the additional grasp $\grasp{\gripper_i}{\handle_j}$,
+$i\in\{1,\cdots\ngrippers\}$, $j\in\{1,\cdots\nhandles\}$. Then there are two
+cases:
+\begin{enumerate}
+\item the object handle $\handle_j$ belongs to is already grasped in state
+  $\state_1$, or
+\item the object handle $\handle_j$ belongs to is in placement is
+  state $\state_1$.
+\end{enumerate}
+In case 1, we replace the transitions between $\state_1$ and $\state_2$ by an additional waypoint state and four waypoint transitions as explained in Figure~\ref{fig:pregrasp-grasp}.
+
+In case 2, we replace the transitions between $\state_1$ and $\state_2$ by three additional waypoint states and eight waypoint transitions as explain in Figure~\ref{fig:pregrasp-placement}.
+
+\begin{figure}
+  \centerline{
+    \def\svgwidth {\linewidth}
+      {\tiny
+       \graphicspath{{./figures/}}
+       \input {figures/waypoint-graph.pdf_tex}
+    }
+  }
+  \caption{Structure of the constraint graph corresponding to the
+    system in Section~\ref{subsec:ur3-cylinder} after inserting
+    waypoint transitions.  Waypoint transitions starting from/going to
+    $(\emptyset,\emptyset)$ contain three waypoint states. All other
+    waypoint transitions contain one waypoint state.}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=.75\linewidth]{figures/example-q-wp-1.png}
+    \includegraphics[width=.75\linewidth]{figures/example-q-wp-2.png}
+    \includegraphics[width=.75\linewidth]{figures/example-q-wp-3.png}
+  \end{center}
+  \caption{Example of extension along the waypoint transition between states
+    $(\emptyset,\emptyset)$ and $(1,\emptyset)$. Each picture represents a
+    waypoint. The last waypoint lies in state $(1,\emptyset)$. $\conf_{near}$
+    and $\conf_{rand}$ are the same as in Figure~\ref{fig:MRRT-extension}.}
+  \label{fig:MRRT-extension-wp}
+\end{figure}
+
+\paragraph{Construction of a path along a waypoint transition} Function
+{\scriptsize EXTEND} in Algorithm~\ref{algo:M-RRT} builds a path along a
+transition from an initial configuration by projecting the configuration
+onto the sub-manifold defined by the goal state constraints and by the
+transition constraints. The right hand side of the transition constraint is
+priorly initialized with the initial configuration.
+
+A waypoint transition builds a path by defining a sequence of configurations
+that lie in the intermediate waypoint states, each waypoint is obtained by
+projecting the previous waypoint onto the corresponding manifold.
+Figure~\ref{fig:MRRT-extension-wp} proposes an example of extension along
+edge $(\emptyset,\emptyset)\rightarrow(1,\emptyset)$ from configuration
+$\conf_{near}$ (Figure~\ref{fig:MRRT-extension} middle). The edge contains three
+waypoints. The random configuration $\conf_{rand=}$ is displayed in
+Figure~\ref{fig:MRRT-extension} top. Table~\ref{table:waypoints} shows the
+waypoint configurations that are produced when extending $\conf_{near}$ toward
+$\conf_{rand}$, and the constraints applied to compute these configurations.
+\begin{table}
+{
+\begin{tabular} {|l|l|}
+  \hline
+  $\conf_{near}$ &
+  \begin{tabular}{l} \textbf{state} $(\emptyset,\emptyset)$ \\
+  \end{tabular}\\
+  \hline
+  $\conf_1$ &
+  \begin{tabular}{l} \textbf{waypoint state} $\gripper{1}>\handle{1}|(\emptyset,\emptyset)|pg$ \\
+    \textbf{constraints} \\
+    {\color{blue}$place_1(\conf)=0$} \\
+    {\color{blue}$place_1/comp(\conf) = place_1/comp(\conf_{near})$} \\
+    $pregrasp_{11}(\conf) = 0$ \\
+    \textbf{solver initialized with} $\conf_{rand}$
+  \end{tabular}\\
+  \hline
+  $\conf_2$ & 
+  \begin{tabular}{l}
+    \textbf{waypoint state} $\gripper{1}>\handle{1}|(\emptyset,\emptyset)|gp$ \\
+    \textbf{state} \\
+    $(1,\emptyset)$ \\
+    \textbf{constraints} \\
+    {\color{blue}$place_1(\conf)=0$} \\
+    {\color{blue}$place_1/comp(\conf) = place_1/comp(\conf_{near})$} \\
+    $grasp_{11}(\conf) = 0$ \\
+    \textbf{solver initialized with} $\conf_{1}$
+  \end{tabular} \\
+  \hline
+  $\conf_{target}$ &
+  \begin{tabular}{l} \textbf{state} $(1,\emptyset)$ \\
+    \textbf{waypoint state} $\gripper{1}>\handle{1}|(\emptyset,\emptyset)|pp$ \\
+    \textbf{constraints} \\
+    {\color{blue}$grasp_{11}(\conf)=0$} \\
+    {\color{blue}$grasp_{11}/comp(\conf) = grasp_{11}/comp(\conf_{2})$} \\
+    $preplace_{1}(\conf) = 0$\\
+    \textbf{solver initialized with} $\conf_{2}$
+  \end{tabular}\\
+  \hline
+\end{tabular}
+\caption{Waypoint configurations computed along edge $(\emptyset,\emptyset)$.
+  The resulting path between $\conf_{near}$ and $\conf_{target}$ is a concatenation
+  of constrained linear interpolation. Constraints applied between a waypoint
+  and its predecessor are shown in blue.}
+\label{table:waypoints}
+}
+\end{table}
+\paragraph{Implementation} From an implementation point of view, class
+\href{https://gepettoweb.laas.fr/hpp/hpp-manipulation/doxygen-html/classhpp_1_1manipulation_1_1graph_1_1WaypointEdge.html}{\texttt{WaypointEdge}} derives from class \href{https://gepettoweb.laas.fr/hpp/hpp-manipulation/doxygen-html/classhpp_1_1manipulation_1_1graph_1_1Edge.html}{\texttt{Edge}}. The waypoint configurations are computed by method\\ \texttt{generateTargetConfig} that is specialized in
+class\\ \texttt{WaypointEdge}.
+
+Note that waypoint states are internal to a waypoint edges and are not known by
+the constraint graph when determining in which state a configuration lies
+(Algorithm~\ref{algo:M-RRT} lines~17 and 23) and when visiting the states of the
+constraint graph (Algorithm~\ref{algo:M-RRT} line~8).
+
+\section{Humanoid Path Planner}\label{sec:humanoid-path-planner}
+
+In this section, we describe in more details the software platform
+\href{https://humanoid-path-planner.github.io/hpp-doc}{Humanoid Path
+  Planner} that implements the concepts and algorithms of the previous
+sections.
+
+Humanoid Path Planner is a collection of standard software packages that depend
+on each other. The main packages are the following:
+\begin{itemize}
+\item \texttt{hpp-fcl} a modified version of \href{https://github.com/flexible-collision-library/fcl}{\texttt{fcl}}. The main additional features are the following:
+  \begin{itemize}
+  \item computation of a lower bound of the distance when testing collision
+    between two objects. This is required for continuous collision detection,
+  \item security margins in collision checking,
+  \end{itemize}
+\item \href{https://stack-of-tasks.github.io/pinocchio}{\texttt{pinocchio}}~\cite{pinocchio} a library computing forward kinematics and dynamics for multi-body kinematic chains,
+\item \texttt{hpp-constraints} a library that implements numerical constraints
+  and solvers,
+\item \texttt{hpp-core} a library that implements most of the conceps relative
+  to motion planning. The main features are
+  \begin{itemize}
+  \item abstraction of paths in configuration spaces and some implementations,
+  \item abstaction of path planning and path optimzation and some implementations,
+  \item abstraction of steering methods and some implementations,
+  \item roadmaps,
+  \item validation of configurations and paths,
+  \end{itemize}
+\item \texttt{hpp-manipulation} a library that implements the manipulation
+  layer with
+  \begin{itemize}
+    \item composite kinematic chains composed of the robots and objects,
+    \item the constraint graph,
+    \item M-RRT algorithm,
+  \end{itemize}
+\item \texttt{hpp-manipulation-urdf} an extension of the SRDF parser to retrieve
+  information relative to objects, like the definition of grippers, handles, and
+  contact surfaces.
+\end{itemize}
+An HPP session consists of a standalone executable \texttt{hppcorbaserver}
+that implements CORBA services. These services can be extended via a plugin
+system. The application can then be controlled via python script or C++ code.
+CORBA clients are provided in python and C++. The packages implementing CORBA
+clients and servers are
+\begin{itemize}
+\item \texttt{hpp-corbaserver} for canonical path planning problems, and
+\item \texttt{hpp-manipulation-corba} for manipulation problems. This
+latter package also provides an implementation of the automatic constraint graph
+construction in python.
+\end{itemize}
+The environment used for path planning as well as the paths computed can be
+displayed using \texttt{gepetto-gui} through packages
+\begin{itemize}
+  \item\texttt{gepetto-viewer},
+  \item\texttt{gepetto-viewer-corba}, and
+  \item\texttt{hpp-gepetto-viewer}.
+\end{itemize}
+
+\subsection{Virtual machine}
+
+A virtual docker image can be downloaded to run, test and replicate the
+examples described in the next sections. After installing docker on a Linux machine, type
+
+\noindent
+{\small\texttt{xhost +\\docker run --rm -it \\ --name hpp --volume="/tmp/.X11-unix:/tmp/.X11-unix"\\ gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/\\ journal2020}}
+
+and follow the instructions.
+
+\subsection{Tutorial}
+
+\subsection{Benchmark}
 
