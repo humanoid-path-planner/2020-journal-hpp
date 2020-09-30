@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -161,6 +161,11 @@ Stilman M, Kuffner J (2008) Planning among movable obstacles with artificial
 {Tonneau} S, {Del Prete} A, {Pettré} J, {Park} C, {Manocha} D, {Mansard} N
   (2018) An efficient acyclic contact planner for multiped robots. IEEE
   Transactions on Robotics 34(3):586--601
+
+\bibitem[{Wilfong(1988)}]{wilfong1988motion}
+Wilfong G (1988) Motion planning in the presence of movable obstacles. In:
+  Proceedings of the fourth annual symposium on Computational geometry, ACM, pp
+  279--288
 
 \bibitem[{Woodruff and Lynch(2017)}]{WooZacLyn2017}
 Woodruff JZ, Lynch KM (2017) Planning and control for dynamic, nonprehensile,
