@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -30,6 +30,13 @@ Canny J (1983) The complexity of robot motion planning. PhD thesis, Massachuset
 \bibitem[{Choset(2001)}]{coverage2001}
 Choset H (2001) Coverage for robotics – a survey of recent results. Annals of
   Mathematics and Artificial Intelligence 31(1):113--126
+
+\bibitem[{Cort{\'e}s et~al.(2002)}]{Cortes2002}
+Cort{\'e}s J, Simeon T, Laumond JP (2002) {A Random Loop Generator for Planning
+  the Motions of Closed Kinematic Chains using PRM Methods}. In: {2002 IEEE
+  International Conference on Robotics and Automation (ICRA 2002)}, {IEEE},
+  Washington, United States, pp 2141--2146,
+  \urlprefix\url{https://hal.laas.fr/hal-01988698}
 
 \bibitem[{Galceran and Carreras(2013)}]{coverage2013}
 Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
