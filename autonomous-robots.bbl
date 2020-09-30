@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -23,6 +23,13 @@ Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
   Robotics and Autonomous Systems 61(12):1258 -- 1276,
   \doi{https://doi.org/10.1016/j.robot.2013.09.004},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S092188901300167X}
+
+\bibitem[{GUIBAS et~al.(1999)}]{pursuit-evasion1999}
+GUIBAS LJ, LATOMBE JC, LAVALLE SM, LIN D, MOTWANI R (1999) A visibility-based
+  pursuit-evasion problem. International Journal of Computational Geometry \&
+  Applications 09(04n05):471--493, \doi{10.1142/S0218195999000273},
+  \urlprefix\url{https://doi.org/10.1142/S0218195999000273},
+  \eprint{https://doi.org/10.1142/S0218195999000273}
 
 \bibitem[{Lamiraux and Kavraki(2001)}]{LamKav2001}
 Lamiraux F, Kavraki LE (2001) Planning paths for elastic objects under
