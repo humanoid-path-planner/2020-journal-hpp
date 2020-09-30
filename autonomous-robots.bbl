@@ -56,6 +56,10 @@ Hsu D, Latombe JC, Motwani R (1999) Path planning in expansive configuration
   spaces. International Journal of Computational Geometry and Applications
   9(4--5):495--512
 
+\bibitem[{{Jaillet} and {Porta}(2013)}]{atlasRRT}
+{Jaillet} L, {Porta} JM (2013) Path planning under kinematic constraints by
+  rapidly exploring manifolds. IEEE Transactions on Robotics 29(1):105--117
+
 \bibitem[{Karaman and Frazzoli(2001)}]{KarFra2011}
 Karaman S, Frazzoli E (2001) Sampling-based algorithms for optimal motion
   planning. The International Journal of Robotics Research 30(7):846--894,
@@ -91,7 +95,7 @@ Mirabel J, Lamiraux F (2016) {Manipulation planning: building paths on
   constrained manifolds},
   \urlprefix\url{https://hal.archives-ouvertes.fr/hal-01360409}
 
-\bibitem[{Mirabel and Lamiraux(2018)}]{mirabel:hal-01804774}
+\bibitem[{Mirabel and Lamiraux(2018)}]{MirLam2018}
 Mirabel J, Lamiraux F (2018) {Handling implicit and explicit constraints in
   manipulation planning}. {Robotics: Science and Systems 2018}, Pittsburg,
   United States, p 9p.,
