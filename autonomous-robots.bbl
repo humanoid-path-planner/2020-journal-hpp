@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -138,6 +138,11 @@ Mirabel J, Lamiraux F (2018) {Handling implicit and explicit constraints in
 Murray RM, Sastry SS, Zexiang L (1994) A mathematical introduction to robotic
   manipulation. CRC Press
 
+\bibitem[{Nieuwenhuisen et~al.(2008)}]{nieuwenhuisen2008effective}
+Nieuwenhuisen D, van~der Stappen AF, Overmars MH (2008) An effective framework
+  for path planning amidst movable obstacles. In: Algorithmic Foundation of
+  Robotics VII, Springer, pp 87--102
+
 \bibitem[{Ota(2004)}]{ota2004rearrangement}
 Ota J (2004) Rearrangement of multiple movable objects-integration of global
   and local planning methodology. In: Robotics and Automation, 2004.
@@ -163,10 +168,21 @@ Schwartz JT, Sharir M (1983) On the “piano movers” problem. ii. general
   \doi{https://doi.org/10.1016/0196-8858(83)90014-3},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0196885883900143}
 
+\bibitem[{Srivastava et~al.(2014)}]{srivastavaetal2014icra}
+Srivastava S, Fang E, Riano L, Chitnis R, Russell S, Abbeel P (2014) Combined
+  task and motion planning through an extensible planner-independent interface
+  layer. In: Proceedings of the IEEE International Conference on Robotics and
+  Automation (ICRA)
+
 \bibitem[{Stilman and Kuffner(2008)}]{stilman2008planning}
 Stilman M, Kuffner J (2008) Planning among movable obstacles with artificial
   constraints. The International Journal of Robotics Research
   27(11-12):1295--1307
+
+\bibitem[{Stilman et~al.(2007)}]{stilman2007manipulation}
+Stilman M, Schamburek JU, Kuffner J, Asfour T (2007) Manipulation planning
+  among movable obstacles. In: Robotics and Automation, 2007 IEEE International
+  Conference on, IEEE, pp 3327--3332
 
 \bibitem[{{Tonneau} et~al.(2018)}]{TonDelPetParManMan2018}
 {Tonneau} S, {Del Prete} A, {Pettré} J, {Park} C, {Manocha} D, {Mansard} N
