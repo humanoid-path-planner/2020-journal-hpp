@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -212,6 +212,11 @@ Schwartz JT, Sharir M (1983) On the “piano movers” problem. ii. general
   Advances in Applied Mathematics 4(3):298 -- 351,
   \doi{https://doi.org/10.1016/0196-8858(83)90014-3},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0196885883900143}
+
+\bibitem[{Siméon et~al.(2004)}]{simeon2004ijrr}
+Siméon T, Laumond JP, Cort\'{e}s J, Sahbani A (2004) Manipulation planning
+  with probabilistic roadmaps. International Journal of Robotics Research
+  23(7/8)
 
 \bibitem[{Srivastava et~al.(2014)}]{srivastavaetal2014icra}
 Srivastava S, Fang E, Riano L, Chitnis R, Russell S, Abbeel P (2014) Combined
