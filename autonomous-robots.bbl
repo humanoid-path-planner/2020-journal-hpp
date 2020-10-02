@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -248,5 +248,10 @@ Wilfong G (1988) Motion planning in the presence of movable obstacles. In:
 Woodruff JZ, Lynch KM (2017) Planning and control for dynamic, nonprehensile,
   and hybrid manipulation tasks. In: 2017 IEEE International Conference on
   Robotics and Automation (ICRA), IEEE, pp 4066--4073
+
+\bibitem[{{Xian} et~al.(2017)}]{XiaLerPha2017}
+{Xian} Z, {Lertkultanon} P, {Pham} Q (2017) Closed-chain manipulation of large
+  objects by multi-arm robotic systems. IEEE Robotics and Automation Letters
+  2(4):1832--1839
 
 \end{thebibliography}
