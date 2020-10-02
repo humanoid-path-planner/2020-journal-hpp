@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -59,6 +59,11 @@ Dalibard S, Nakhaei A, Lamiraux F, Laumond JP (2009) {Whole-Body Task Planning
   International Conference on Humanoid Robots}, Paris, France, pp 1--6,
   \urlprefix\url{https://hal.archives-ouvertes.fr/hal-00450897}
 
+\bibitem[{Diankov(2010)}]{diankov_thesis}
+Diankov R (2010) Automated construction of robotic manipulation programs. PhD
+  thesis, Carnegie Mellon University, Robotics Institute,
+  \urlprefix\url{http://www.programmingvision.com/rosen_diankov_thesis.pdf}
+
 \bibitem[{Galceran and Carreras(2013)}]{coverage2013}
 Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
   Robotics and Autonomous Systems 61(12):1258 -- 1276,
@@ -95,6 +100,13 @@ Karaman S, Frazzoli E (2001) Sampling-based algorithms for optimal motion
 Kavraki LE, {\v S}vestka P, Latombe JC, Overmars M (1996) Probabilistic
   roadmaps for fast path planning in high dimensional configuration spaces.
   IEEE Transactions on Robotics and Automation 12(4):566--580
+
+\bibitem[{Kingston et~al.(2019)}]{KinMolKav2019}
+Kingston Z, Moll M, Kavraki LE (2019) Exploring implicit spaces for constrained
+  sampling-based planning. The International Journal of Robotics Research
+  38(10-11):1151--1178, \doi{10.1177/0278364919868530},
+  \urlprefix\url{https://doi.org/10.1177/0278364919868530},
+  \eprint{https://doi.org/10.1177/0278364919868530}
 
 \bibitem[{Kuffner and LaValle(2000)}]{KufLav00}
 Kuffner J, LaValle S (2000) Rrt-connect: An efficient approach to single-query
@@ -187,6 +199,11 @@ Stilman M, Kuffner J (2008) Planning among movable obstacles with artificial
 Stilman M, Schamburek JU, Kuffner J, Asfour T (2007) Manipulation planning
   among movable obstacles. In: Robotics and Automation, 2007 IEEE International
   Conference on, IEEE, pp 3327--3332
+
+\bibitem[{{\c{S}}ucan et~al.(2012)}]{ompl2012}
+{\c{S}}ucan IA, Moll M, Kavraki LE (2012) The {O}pen {M}otion {P}lanning
+  {L}ibrary. {IEEE} Robotics \& Automation Magazine 19(4):72--82,
+  \doi{10.1109/MRA.2012.2205651}, \url{https://ompl.kavrakilab.org}
 
 \bibitem[{{Tonneau} et~al.(2018)}]{TonDelPetParManMan2018}
 {Tonneau} S, {Del Prete} A, {Pettré} J, {Park} C, {Manocha} D, {Mansard} N
