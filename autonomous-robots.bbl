@@ -106,7 +106,7 @@ Hsu D, Latombe JC, Motwani R (1999) Path planning in expansive configuration
 {Jaillet} L, {Porta} JM (2013) Path planning under kinematic constraints by
   rapidly exploring manifolds. IEEE Transactions on Robotics 29(1):105--117
 
-\bibitem[{Karaman and Frazzoli(2001)}]{KarFra2011}
+\bibitem[{Karaman and Frazzoli(2011)}]{KarFra2011}
 Karaman S, Frazzoli E (2001) Sampling-based algorithms for optimal motion
   planning. The International Journal of Robotics Research 30(7):846--894,
   \urlprefix\url{http://arxiv.org/abs/1105.1186}, \eprint{1105.1186}
