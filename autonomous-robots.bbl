@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{45}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -64,6 +64,11 @@ Diankov R (2010) Automated construction of robotic manipulation programs. PhD
   thesis, Carnegie Mellon University, Robotics Institute,
   \urlprefix\url{http://www.programmingvision.com/rosen_diankov_thesis.pdf}
 
+\bibitem[{Dobson and Bekris(2015)}]{DobBek2015}
+Dobson A, Bekris K (2015) Planning representations and algorithms for
+  prehensile multi-arm manipulation. In: IEEE/RSJ International Conference on
+  Intelligent Robots and Systems (IROS), Hamburg, Germany
+
 \bibitem[{Galceran and Carreras(2013)}]{coverage2013}
 Galceran E, Carreras M (2013) A survey on coverage path planning for robotics.
   Robotics and Autonomous Systems 61(12):1258 -- 1276,
@@ -75,12 +80,22 @@ Garrett CR, Lozano-Perez T, Kaelbling LP (2017) Sample-based methods for
   factored task and motion planning. In: Robotics: Science and Systems (RSS),
   \urlprefix\url{http://lis.csail.mit.edu/pubs/garrett-rss17.pdf}
 
+\bibitem[{Gharbi et~al.(2009)}]{GhaCorSim2009}
+Gharbi M, Cort\'es J, , Sim\'eon T (2009) Roadmap composition for multi-arm
+  systems path planning. In: IEEE/RSJ International Conference on Intelligent
+  Robots and Systems (IROS), Saint-Louis, USA
+
 \bibitem[{Guibas et~al.(1999)}]{pursuit-evasion1999}
 Guibas LJ, Latombe JC, Lavalle SM, Lin D, Motwani R (1999) A visibility-based
   pursuit-evasion problem. International Journal of Computational Geometry \&
   Applications 09(04n05):471--493, \doi{10.1142/S0218195999000273},
   \urlprefix\url{https://doi.org/10.1142/S0218195999000273},
   \eprint{https://doi.org/10.1142/S0218195999000273}
+
+\bibitem[{Harada et~al.(2014)}]{HarTsuLau2014}
+Harada K, Tsuji T, Laumond JP (2014) A manipulation motion planner for dual-arm
+  industrial manipulators. in proceedings of. In: IEEE International Conference
+  on Robotics and Automation, Hongkong, China, pp 928--–934
 
 \bibitem[{Hsu et~al.(1999)}]{HsuLatMot99}
 Hsu D, Latombe JC, Motwani R (1999) Path planning in expansive configuration
@@ -108,6 +123,10 @@ Kingston Z, Moll M, Kavraki LE (2019) Exploring implicit spaces for constrained
   \urlprefix\url{https://doi.org/10.1177/0278364919868530},
   \eprint{https://doi.org/10.1177/0278364919868530}
 
+\bibitem[{Krontiris and Bekris(2015)}]{KroBek2015}
+Krontiris A, Bekris K (2015) Dealing with difficult instances of object
+  rearrangement. In: Robotics Science and Systems, Roma, Italy
+
 \bibitem[{Kuffner and LaValle(2000)}]{KufLav00}
 Kuffner J, LaValle S (2000) Rrt-connect: An efficient approach to single-query
   path planning. In: International Conference on Robotics and Automation, IEEE,
@@ -132,6 +151,10 @@ Lengagne S, Vaillant J, Yoshida E, Kheddar A (2013) Generation of whole-body
   Research 32(9-10):1104--1119, \doi{10.1177/0278364913478990},
   \urlprefix\url{https://doi.org/10.1177/0278364913478990},
   \eprint{https://doi.org/10.1177/0278364913478990}
+
+\bibitem[{Lertkultanon and Pham(2015)}]{LerPha2015}
+Lertkultanon P, Pham QC (2015) A single-query manipulation planner. IEEE
+  Robotics and Automation Letters 1(1):198--205
 
 \bibitem[{Likhachev et~al.(2005)}]{DarpaUrbanChallenge}
 Likhachev M, Ferguson D, Gordon G, Stentz A, Thrun S (2005) Anytime dynamic a*:
@@ -176,6 +199,12 @@ Schmitt PS, Neubauer W, Feiten W, Wurm KM, Wichert GV, Burgard W (2017)
   Optimal, sampling-based manipulation planning. 2017 IEEE International
   Conference on Robotics and Automation (ICRA), pp 3426--3432,
   \urlprefix\url{http://ais.informatik.uni-freiburg.de/publications/papers/schmitt17icra.pdf}
+
+\bibitem[{Schmitt et~al.(2019)}]{schmitt19icra}
+Schmitt PS, Wirnshofer F, Wurm KM, Wichert GV, Burgard W (2019) Modeling and
+  planning manipulation in dynamic environments. In: 2019 IEEE International
+  Conference on Robotics and Automation (ICRA), IEEE,
+  \urlprefix\url{http://ais.informatik.uni-freiburg.de/publications/papers/schmitt19icra.pdf}
 
 \bibitem[{Schwartz and Sharir(1983)}]{SchSha1983}
 Schwartz JT, Sharir M (1983) On the “piano movers” problem. ii. general
