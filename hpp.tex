@@ -1543,3 +1543,82 @@ The third test case features humanoid robot Romeo manipulating a placard. The
 robot is requested to rotate the placard by 180 degrees. The robot is equipped
 with two grippers and the placard with two handles. Each handle is associated
 to a unique gripper. The number of states of the contraint graph is thus 3.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/construction-set-init.png}
+    \includegraphics[width=\linewidth]{figures/construction-set-goal.png}    
+  \end{center}
+  \caption{Construction set: two robots are requested to assemble magnetic
+    spheres on a cylinder from an initial configuration (top) to a goal state
+    (bottom).}
+  \label{fig:construction-set}
+\end{figure}
+
+\begin{table}
+  \begin{center}
+  \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    & min & max & mean & std dev \\
+    \hline
+    time (s) & 0.20 & 214.22 & 17.11 & 45.84 \\
+    nodes & 10 &  39 & 14.70 & 6.48 \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \caption{Experimental results for construction set assembly.}
+  \label{tab:construction-set}
+\end{table}
+
+In the three previous test cases, the constraint graph was automatically built
+following Algorithm~\ref{algo:constraintGraphFactory}. If the number of grippers
+and handles increases, the number of states in the constraint may increase very
+quickly. Using python bindings, it is possible however to define constraint
+graphs with only the necessary states. We now present a test case that
+illustrates this possibility.
+
+In this example, an operator provides the sequence of actions (transitions)
+the system needs to go through:
+\begin{enumerate}
+\item robot 1 grasps sphere 1,
+\item robot 2 grasps cylinder 1,
+\item robot 1 sticks sphere 1 on cylinder 1,
+\item robot 1 releases sphere 1,
+\item robot 1 grasps sphere 2,
+\item robot 1 sticks sphere 2 on cylinder 1,
+\item robot 1 releases sphere 2,
+\item robot 2 put cylinder 1 on the ground.
+\end{enumerate}
+From this sequence of actions, the sequence of states visited is
+computed and only those states (9 in total) are built in the
+constraint graph. Then, a sequence of subgoals in the successive
+states is computed, in such a way that each sub-goal is accessible by
+the previous one (on the same leaf of the corresponding transition
+foliation). The subgoals are then linked by running a constrained visibility
+PRM algorithm (\cite{SimLauNis00}) on each leaf. The python code can be found
+on \href{https://github.com/humanoid-path-planner/hpp_benchmark/blob/master/2020-07-23/construction-set/script.py}{github.com}.
+
+Figure~\ref{fig:construction-set} displays the initial configuration and the
+goal state. Table~\ref{tab:construction-set} shows the experimental results.
+
+\subsubsection{Analysis}
+
+The experimental results show that M-RRT is able to solve a variety of
+manipulation problems including with a legged robots in quasi-static
+equilibrium. No parameter tuning is required between the different problems. All
+parameters are set to a default value for all test cases.
+
+As for any random motion planning method, we observe a large standard
+deviation within the 20 runs of each test case, both for the number of nodes
+and for the time of computation.
+
+We have also observed experimentally that the efficiency of M-RRT decreases
+when
+\begin{enumerate}
+\item the number of states to visit to solve a problem increases,
+\item the number of foliated states increases.
+\end{enumerate}
+For this reason, M-RRT is not able to solve the construction set
+problem in a reasonable amount of time. It remains to our knowledge
+the only algorithm in the literature able to solve a variety of
+problems as large as those exposed in this section.
