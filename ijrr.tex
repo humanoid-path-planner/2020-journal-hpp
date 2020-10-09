@@ -1,0 +1,62 @@
+% sage_latex_guidelines.tex V1.20, 14 January 2017
+
+\documentclass[Afour,sageh,times]{sagej}
+
+%\usepackage{tabularx}
+\usepackage{moreverb,url}
+\usepackage{xspace}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{yfonts}
+
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,
+  urlcolor=red]{hyperref}
+
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\input{new-command}
+\newtheorem{definition}{Definition}
+
+\def\volumeyear{2020}
+
+\begin{document}
+
+\runninghead{F.~Lamiraux et al}
+
+\title{Prehensile Manipulation Planning: Modelling, Algorithms and Implementation}
+
+\author{Florent Lamiraux\affilnum{1}, Joseph Mirabel\affilnum{1}}
+
+\affiliation{
+  \affilnum{1}LAAS-CNRS, University of Toulouse, France\\
+}
+
+\corrauth{Florent Lamiraux, LAAS-CNRS,
+  7 avenue du Colonel Roche,
+  Toulouse, France
+}
+
+\email{florent.lamiraux@laas.fr}
+
+\begin{abstract}
+\end{abstract}
+
+\keywords{robotics, manipulation planning, constrained path planning,
+  path planning}
+
+\maketitle
+
+\input{hpp}
+
+\begin{acks}
+This work has been partially supported by Airbus S.A.S. in the framework of the common laboratory Rob4Fam.
+\end{acks}
+
+%\bibliographystyle{authordate1}
+\bibliographystyle{abbrvnat}
+
+\bibliography{hpp}
+
+\end{document}
