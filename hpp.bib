@@ -1,0 +1,650 @@
+@Book{LMS94,
+  author =    {Richard M. Murray and S. Shankar Sastry and Li Zexiang},
+  title =        {A mathematical introduction to robotic manipulation},
+  publisher =    {CRC Press},
+  year =         1994
+}
+
+
+@Article{rodrigues1840,
+  author =       {Olinde Rodrigues},
+  title =        {Des lois g\'eom\'etriques qui r\'egissent les d\'eplacements d'un syst\`eme solide dans l'espace, et de la variation des coordonn\'ees provenant de ces d\'eplacements consid\'er\'es ind\'ependants des causes qui peuvent les produire},
+  journal =      {Journal de Math\'ematiques Pures et Appliqu\'ees},
+  year =         1840,
+  volume =    5,
+  pages =     {380--440}
+  }
+
+@inproceedings{MirLam2018,
+  TITLE = {{Handling implicit and explicit constraints in manipulation planning}},
+  AUTHOR = {Mirabel, Joseph and Lamiraux, Florent},
+  URL = {https://hal.archives-ouvertes.fr/hal-01804774},
+  BOOKTITLE = {{Robotics: Science and Systems 2018}},
+  ADDRESS = {Pittsburg, United States},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 18138},
+  PAGES = {9p.},
+  YEAR = {2018},
+  MONTH = Jun,
+  PDF = {https://hal.archives-ouvertes.fr/hal-01804774/file/paper.pdf},
+  HAL_ID = {hal-01804774},
+  HAL_VERSION = {v1},
+}
+
+@unpublished{mirabel:hal-01360409,
+  TITLE = {{Manipulation planning: building paths on constrained manifolds}},
+  AUTHOR = {Mirabel, Joseph and Lamiraux, Florent},
+  URL = {https://hal.archives-ouvertes.fr/hal-01360409},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 16256},
+  YEAR = {2016},
+  MONTH = Jul,
+  PDF = {https://hal.archives-ouvertes.fr/hal-01360409/file/output.pdf},
+  HAL_ID = {hal-01360409},
+  HAL_VERSION = {v3}
+}
+
+@inproceedings{mirabel-iros2016,
+  TITLE = {{HPP: a new software for constrained motion planning}},
+  AUTHOR = {Mirabel, Joseph and Tonneau, Steve and Fernbach, Pierre and Sepp{\"a}l{\"a}, Anna-Kaarina and Campana, Myl{\`e}ne and Mansard, Nicolas and Lamiraux, Florent},
+  URL = {https://hal.archives-ouvertes.fr/hal-01290850},
+  BOOKTITLE = {{International Conference on Intelligent Robots and Systems (IROS 2016)}},
+  ADDRESS = {Daejeon, South Korea},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 16070},
+  YEAR = {2016},
+  MONTH = Oct,
+  KEYWORDS = {manipulation ; legged robotics ; motion planning software},
+  PDF = {https://hal.archives-ouvertes.fr/hal-01290850v2/file/output.pdf},
+  HAL_ID = {hal-01290850},
+  HAL_VERSION = {v2},
+}
+
+@inproceedings{schmitt17icra,
+  author = {Philipp S. Schmitt and Werner Neubauer and Wendelin Feiten and Kaim M. Wurm and Georg V. Wichert and Wolfram Burgard},
+  title = {Optimal, sampling-based manipulation planning},
+  booktitle = {2017 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages = {3426--3432},
+  year = 2017,
+  doi = {10.1109/ICRA.2017.7989390},
+  url = {http://ais.informatik.uni-freiburg.de/publications/papers/schmitt17icra.pdf},
+  organization = {IEEE}
+}
+
+@article{LavKuf01b,
+  author={S. M. LaValle and J. J. Kuffner},
+  title={Randomized Kinodynamic Planning},
+  journal = {International Journal of Robotics Research},
+  volume = {20},
+  number = {5},
+  pages={378-400},
+  month = {May}, 
+  year={2001}
+}
+
+@INPROCEEDINGS{pinocchio,
+  author={J. {Carpentier} and G. {Saurel} and G. {Buondonno} and J. {Mirabel} and F. {Lamiraux} and O. {Stasse} and N. {Mansard}},
+  booktitle={2019 IEEE/SICE International Symposium on System Integration (SII)}, 
+  title={The Pinocchio C++ library : A fast and flexible implementation of rigid body dynamics algorithms and their analytical derivatives}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={614-619},}
+
+@article{KinMolKav2019,
+author = {Zachary Kingston and Mark Moll and Lydia E Kavraki},
+title ={Exploring implicit spaces for constrained sampling-based planning},
+journal = {The International Journal of Robotics Research},
+volume = {38},
+number = {10-11},
+pages = {1151-1178},
+year = {2019},
+doi = {10.1177/0278364919868530},
+URL = {https://doi.org/10.1177/0278364919868530},
+eprint = {https://doi.org/10.1177/0278364919868530},
+    abstract = { We present a review and reformulation of manifold constrained sampling-based motion planning within a unifying framework, IMACS (implicit manifold configuration space). IMACS enables a broad class of motion planners to plan in the presence of manifold constraints, decoupling the choice of motion planning algorithm and method for constraint adherence into orthogonal choices. We show that implicit configuration spaces defined by constraints can be presented to sampling-based planners by addressing two key fundamental primitives, sampling and local planning, and that IMACS preserves theoretical properties of probabilistic completeness and asymptotic optimality through these primitives. Within IMACS, we implement projection- and continuation-based methods for constraint adherence, and demonstrate the framework on a range of planners with both methods in simulated and realistic scenarios. Our results show that the choice of method for constraint adherence depends on many factors and that novel combinations of planners and methods of constraint adherence can be more effective than previous approaches. Our implementation of IMACS is open source within the Open Motion Planning Library and is easily extended for novel planners and constraint spaces. }
+}
+
+@inproceedings{DarpaUrbanChallenge,
+author = {Likhachev, Maxim and Ferguson, Dave and Gordon, Geoff and Stentz, Anthony and Thrun, Sebastian},
+title = {Anytime Dynamic A*: An Anytime, Replanning Algorithm},
+year = {2005},
+isbn = {1577352203},
+publisher = {AAAI Press},
+abstract = {We present a graph-based planning and replanning algorithm able to produce bounded suboptimal solutions in an anytime fashion. Our algorithm tunes the quality of its solution based on available search time, at every step reusing previous search efforts. When updated information regarding the underlying graph is received, the algorithm incrementally repairs its previous solution. The result is an approach that combines the benefits of anytime and incremental planners to provide efficient solutions to complex, dynamic search problems. We present theoretical analysis of the algorithm, experimental results on a simulated robot kinematic arm, and two current applications in dynamic path planning for outdoor mobile robots.},
+booktitle = {Proceedings of the Fifteenth International Conference on International Conference on Automated Planning and Scheduling},
+pages = {262–271},
+numpages = {10},
+location = {Monterey, California, USA},
+series = {ICAPS'05}
+}
+
+@article{RouFerTai2020,
+  TITLE = {{Motion Planning for an Elastic Rod using Contacts}},
+  AUTHOR = {Roussel, Olivier and Fernbach, Pierre and Ta{\"i}x, Michel},
+  URL = {https://hal.archives-ouvertes.fr/hal-01954894},
+  JOURNAL = {{IEEE Transactions on Automation Science and Engineering}},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 18495},
+  PUBLISHER = {{Institute of Electrical and Electronics Engineers}},
+  VOLUME = {17},
+  NUMBER = {2},
+  PAGES = {670-683},
+  YEAR = {2020},
+  MONTH = Apr,
+  DOI = {10.1109/TASE.2019.2941046},
+  KEYWORDS = {Sampling-based motion planning ; sliding motion planning ; elastic rod motion},
+  PDF = {https://hal.archives-ouvertes.fr/hal-01954894/file/travail.pdf},
+  HAL_ID = {hal-01954894},
+  HAL_VERSION = {v1},
+}
+
+@article{LamKav2001,
+author = {Florent Lamiraux and Lydia E. Kavraki},
+title ={Planning Paths for Elastic Objects under Manipulation Constraints},
+journal = {The International Journal of Robotics Research},
+volume = {20},
+number = {3},
+pages = {188-208},
+year = {2001},
+URL = {https://doi.org/10.1177/02783640122067354},
+}
+
+@article{coverage2001,
+author = {Choset, Howie},
+year = 2001,
+title = {Coverage for robotics – A survey of recent results},
+journal = {Annals of Mathematics and Artificial Intelligence},
+pages = {113--126},
+volume = {31},
+number = {1}
+}
+
+@article{coverage2013,
+title = "A survey on coverage path planning for robotics",
+journal = "Robotics and Autonomous Systems",
+volume = "61",
+number = "12",
+pages = "1258 - 1276",
+year = "2013",
+issn = "0921-8890",
+doi = "https://doi.org/10.1016/j.robot.2013.09.004",
+url = "http://www.sciencedirect.com/science/article/pii/S092188901300167X",
+author = "Enric Galceran and Marc Carreras",
+keywords = "Coverage path planning, Path planning, Motion planning",
+abstract = "Coverage Path Planning (CPP) is the task of determining a path that passes over all points of an area or volume of interest while avoiding obstacles. This task is integral to many robotic applications, such as vacuum cleaning robots, painter robots, autonomous underwater vehicles creating image mosaics, demining robots, lawn mowers, automated harvesters, window cleaners and inspection of complex structures, just to name a few. A considerable body of research has addressed the CPP problem. However, no updated surveys on CPP reflecting recent advances in the field have been presented in the past ten years. In this paper, we present a review of the most successful CPP methods, focusing on the achievements made in the past decade. Furthermore, we discuss reported field applications of the described CPP methods. This work aims to become a starting point for researchers who are initiating their endeavors in CPP. Likewise, this work aims to present a comprehensive review of the recent breakthroughs in the field, providing links to the most interesting and successful works."
+}
+
+@article{pursuit-evasion1999,
+author = {Guibas, Leonidas J. and Latombe, Jean-Claude and Lavalle, Steven M. and Lin, David and Motwani, Rajeev},
+title = {A VISIBILITY-BASED PURSUIT-EVASION PROBLEM},
+journal = {International Journal of Computational Geometry \& Applications},
+volume = {09},
+number = {04n05},
+pages = {471-493},
+year = {1999},
+doi = {10.1142/S0218195999000273},
+
+URL = { 
+        https://doi.org/10.1142/S0218195999000273
+    
+},
+eprint = { 
+        https://doi.org/10.1142/S0218195999000273
+    
+}
+,
+    abstract = { This paper addresses the problem of planning the motion of one or more pursuers in a polygonal environment to eventually "see" an evader that is unpredictable, has unknown initial position, and is capable of moving arbitrarily fast. This problem was first introduced by Suzuki and Yamashita. Our study of this problem is motivated in part by robotics applications, such as surveillance with a mobile robot equipped with a camera that must find a moving target in a cluttered workspace. A few bounds are introduced, and a complete algorithm is presented for computing a successful motion strategy for a single pursuer. For simply-connected free spaces, it is shown that the minimum number of pursuers required is Θ(lg n). For multiply-connected free spaces, the bound is \$\Theta(\sqrt{h}+ {\rm lg} n)\$ pursuers for a polygon that has n edges and h holes. A set of problems that are solvable by a single pursuer and require a linear number of recontaminations is shown. The complete algorithm searches a finite graph that is constructed on the basis of critical information changes. It has been implemented and computed examples are shown. }
+}
+
+@article{SchSha1983,
+title = "On the “piano movers” problem. II. General techniques for computing topological properties of real algebraic manifolds",
+journal = "Advances in Applied Mathematics",
+volume = "4",
+number = "3",
+pages = "298 - 351",
+year = "1983",
+issn = "0196-8858",
+doi = "https://doi.org/10.1016/0196-8858(83)90014-3",
+url = "http://www.sciencedirect.com/science/article/pii/0196885883900143",
+author = "Jacob T Schwartz and Micha Sharir",
+abstract = "This paper continues the discussion, begun in J. Schwartz and M. Sharir [Comm. Pure Appl. Math., in press], of the following problem, which arises in robotics: Given a collection of bodies B, which may be hinged, i.e., may allow internal motion around various joints, and given a region bounded by a collection of polyhedral or other simple walls, decide whether or not there exists a continuous motion connecting two given positions and orientations of the whole collection of bodies. We show that this problem can be handled by appropriate refinements of methods introduced by A. Tarski [“A Decision Method for Elementary Algebra and Geometry,” 2nd ed., Univ. of Calif. Press, Berkeley, 1951] and G. Collins [in “Second GI Conference on Automata Theory and Formal Languages,” Lecture Notes in Computer Science, Vol. 33, pp. 134–183, Springer-Verlag, Berlin, 1975], which lead to algorithms for this problem which are polynomial in the geometric complexity of the problem for each fixed number of degrees of freedom (but exponential in the number of degrees of freedom). Our method, which is also related to a technique outlined by J. Reif [in “Proceedings, 20th Symposium on the Foundations of Computer Science,” pp. 421–427, 1979], also gives a general (but not polynomial time) procedure for calculating all of the homology groups of an arbitrary real algebraic variety. Various algorithmic issues concerning computations with algebraic numbers, which are required in the algorithms presented in this paper, are also reviewed."
+}
+
+@PhdThesis{Canny1983,
+  author =       {John Canny},
+  title =        {The complexity of robot motion planning},
+  school =       {Massachuset Institute of Technology},
+  year =         1983}
+
+@InProceedings{KufLav00,
+  author = 	 {J.~Kuffner and S.~LaValle},
+  title = 	 {RRT-Connect: An Efficient Approach to Single-Query
+                  Path Planning},
+  pages =        {473--479},
+  booktitle = 	 "International Conference on Robotics and Automation",
+  year = 	 "2000",
+  organization = "IEEE",
+  address = 	 "San Francisco, (USA)",
+  month = 	 Apr
+}
+@article{KSLO1996
+, author =	"L. E. Kavraki and P. {\v S}vestka and J.-C. Latombe and
+		  M. Overmars"
+, title =	"Probabilistic Roadmaps for Fast Path Planning in High
+		  Dimensional Configuration Spaces"
+, journal =	"IEEE Transactions  on Robotics and Automation"
+, volume =	"12"
+, number =      "4"
+, year =	1996
+, pages =       "566--580"
+}
+
+@article{KarFra2011,
+  author    = {Sertac Karaman and
+               Emilio Frazzoli},
+  title     = {Sampling-based Algorithms for Optimal Motion Planning},
+  journal = {The International Journal of Robotics Research},
+  volume = {30},
+  number = {7},
+  pages = {846-894},
+  year = 2011,
+  url       = {http://arxiv.org/abs/1105.1186},
+  archivePrefix = {arXiv},
+  eprint    = {1105.1186},
+  timestamp = {Mon, 13 Aug 2018 16:49:16 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1105-1186.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@Article{HsuLatMot99,
+  author = 	 {D. Hsu and J.-C. Latombe and R. Motwani},
+  title = 	 {Path Planning in Expansive Configuration Spaces},
+  journal = 	 {International Journal of Computational Geometry and Applications},
+  year = 	 1999,
+  volume =	 9,
+  number =	 {4--5},
+  pages =	 {495--512}
+}
+
+@article{Berenson2011,
+author = {Dmitry Berenson and Siddhartha Srinivasa and James Kuffner},
+title ={Task Space Regions: A framework for pose-constrained manipulation planning},
+journal = {The International Journal of Robotics Research},
+volume = {30},
+number = {12},
+pages = {1435-1460},
+year = {2011},
+doi = {10.1177/0278364910396389},
+URL = {https://doi.org/10.1177/0278364910396389},
+eprint = {https://doi.org/10.1177/0278364910396389},
+pdf={https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.207.4749&rep=rep1&type=pdf}
+}
+
+@inproceedings{Cortes2002,
+  TITLE = {{A Random Loop Generator for Planning the Motions of Closed Kinematic Chains using PRM Methods}},
+  AUTHOR = {Cort{\'e}s, Juan and Simeon, Thierry and Laumond, Jean-Paul},
+  URL = {https://hal.laas.fr/hal-01988698},
+  BOOKTITLE = {{2002 IEEE International Conference on Robotics and Automation (ICRA 2002)}},
+  ADDRESS = {Washington, United States},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 01432},
+  PUBLISHER = {{IEEE}},
+  PAGES = {2141-2146},
+  YEAR = {2002},
+  MONTH = May,
+  PDF = {https://hal.laas.fr/hal-01988698/file/02ICRArlg.pdf},
+  HAL_ID = {hal-01988698},
+  HAL_VERSION = {v1},
+}
+
+@ARTICLE{atlasRRT,
+  author={L. {Jaillet} and J. M. {Porta}},
+  journal={IEEE Transactions on Robotics},
+  title={Path Planning Under Kinematic Constraints by Rapidly Exploring Manifolds},
+  year={2013},
+  volume={29},
+  number={1},
+  pages={105--117},
+}
+
+@inproceedings{DalNakLamLau2009,
+  TITLE = {{Whole-Body Task Planning for a Humanoid Robot: a Way to Integrate Collision Avoidance}},
+  AUTHOR = {Dalibard, S{\'e}bastien and Nakhaei, Alireza and Lamiraux, Florent and Laumond, Jean-Paul},
+  URL = {https://hal.archives-ouvertes.fr/hal-00450897},
+  BOOKTITLE = {{IEEE International Conference on Humanoid Robots}},
+  ADDRESS = {Paris, France},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree}09789},
+  PAGES = {1-6},
+  YEAR = {2009},
+  MONTH = Dec,
+  PDF = {https://hal.archives-ouvertes.fr/hal-00450897/file/09humanoids.pdf},
+  HAL_ID = {hal-00450897},
+  HAL_VERSION = {v1},
+}
+
+@article{dalibard:hal-00654175,
+  TITLE = {{Dynamic Walking and Whole-Body Motion Planning for Humanoid Robots: an Integrated Approach}},
+  AUTHOR = {Dalibard, S{\'e}bastien and El Khoury, Antonio and Lamiraux, Florent and Nakhaei, Alireza and Ta{\"i}x, Michel and Laumond, Jean-Paul},
+  URL = {https://hal.archives-ouvertes.fr/hal-00654175},
+  JOURNAL = {{The International Journal of Robotics Research}},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree}11697},
+  PUBLISHER = {{SAGE Publications}},
+  VOLUME = {32},
+  NUMBER = {9-10},
+  PAGES = {pp.1089-1103},
+  YEAR = {2013},
+  MONTH = Aug,
+  PDF = {https://hal.archives-ouvertes.fr/hal-00654175v2/file/paper.pdf},
+  HAL_ID = {hal-00654175},
+  HAL_VERSION = {v2},
+}
+
+@TechReport{AlaSimLau89,
+  author =       {Alami, Rachid and Siméon, Thierry and Laumond, Jean-Paul},
+  title =        {A geometrical approach to planning manipulation tasks (3). The case of discrete placements and Grasps},
+  institution =  {LAAS-CNRS},
+  year =         1989}
+
+@Article{BenRiv1998,
+  author =       {Ben-Shahar, Ohad and Rivlin, Ehud},
+  title =        {Practical Pushing Planning for Rearrangement Tasks},
+  journal =      {IEEE Transactions On Robotics And Automation},
+  year =         1998,
+  volume =    14,
+  number =    4,
+  pages =     {549--565},
+  month =     {August}
+}
+
+@inproceedings{WooZacLyn2017,
+  title={Planning and control for dynamic, nonprehensile, and hybrid manipulation tasks},
+  author={Woodruff, J Zachary and Lynch, Kevin M},
+  booktitle={2017 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={4066--4073},
+  year={2017},
+  organization={IEEE}
+}
+
+@article{Bretl2006,
+ author = {Bretl, Timothy},
+ title = {Motion Planning of Multi-Limbed Robots Subject to Equilibrium Constraints: The Free-Climbing Robot Problem},
+ journal = {The Int. Journal of Robot. Research (IJRR)},
+ issue_date = {April 2006},
+ volume = {25},
+ number = {4},
+ month = apr,
+ year = {2006},
+ issn = {0278-3649},
+ pages = {317--342},
+ numpages = {26},
+ url = {http://dx.doi.org/10.1177/0278364906063979},
+ doi = {10.1177/0278364906063979},
+ acmid = {1124585},
+ publisher = {Sage Publications, Inc.},
+ address = {Thousand Oaks, CA, USA},
+ keywords = {climbing robots, closed kinematic chains, equilibrium constraints, free-climbing, motion planning, probabilistic roadmaps},
+} 
+
+@ARTICLE{TonDelPetParManMan2018,
+  author={S. {Tonneau} and A. {Del Prete} and J. {Pettré} and C. {Park} and D. {Manocha} and N. {Mansard}},
+  journal={IEEE Transactions on Robotics}, 
+  title={An Efficient Acyclic Contact Planner for Multiped Robots}, 
+  year={2018},
+  volume={34},
+  number={3},
+  pages={586-601},
+}
+
+@article{LenVaiYosKhe2013,
+author = {Sébastien Lengagne and Joris Vaillant and Eiichi Yoshida and Abderrahmane Kheddar},
+title ={Generation of whole-body optimal dynamic multi-contact motions},
+journal = {The International Journal of Robotics Research},
+volume = {32},
+number = {9-10},
+pages = {1104-1119},
+year = {2013},
+doi = {10.1177/0278364913478990},
+URL = {https://doi.org/10.1177/0278364913478990},
+eprint = {https://doi.org/10.1177/0278364913478990}
+}
+
+@inproceedings{wilfong1988motion,
+  title={Motion planning in the presence of movable obstacles},
+  author={Wilfong, Gordon},
+  booktitle={Proceedings of the fourth annual symposium on Computational geometry},
+  pages={279--288},
+  year={1988},
+  organization={ACM}
+}
+
+@article{stilman2008planning,
+  title={Planning among movable obstacles with artificial constraints},
+  author={Stilman, Mike and Kuffner, James},
+  journal={The International Journal of Robotics Research},
+  volume={27},
+  number={11-12},
+  pages={1295--1307},
+  year={2008},
+  publisher={SAGE Publications}
+}
+
+@inproceedings{ota2004rearrangement,
+  title={Rearrangement of multiple movable objects-integration of global and local planning methodology},
+  author={Ota, Jun},
+  booktitle={Robotics and Automation, 2004. Proceedings. ICRA'04. 2004 IEEE International Conference on},
+  volume={2},
+  pages={1962--1967},
+  year={2004},
+  organization={IEEE}
+}
+
+@InProceedings{LIS210,
+title = {Sample-Based Methods for Factored Task and Motion Planning},
+author = {Caelan Reed Garrett and Tomas Lozano-Perez and Leslie Pack Kaelbling},
+year = {2017},
+url = {http://lis.csail.mit.edu/pubs/garrett-rss17.pdf},
+booktitle = {Robotics: Science and Systems (RSS)},
+}
+
+
+
+@Article{KaeLoz2013,
+  author =       {Kaelbling, Leslie and Lozano-P\'erez, Tomás},
+  title =        {Integrated task and motion planning in belief space},
+  journal =      {International Journal on Robotics Research},
+  year =         2013,
+  volume =    32,
+  number =    {9--10},
+  pages =     {1194–-1227},
+  url = {https://lis.csail.mit.edu/pubs/tlp/IJRRBelFinal.pdf}}
+
+@inproceedings{stilman2007manipulation,
+  title={Manipulation planning among movable obstacles},
+  author={Stilman, Mike and Schamburek, Jan-Ullrich and Kuffner, James and Asfour, Tamim},
+  booktitle={Robotics and Automation, 2007 IEEE International Conference on},
+  pages={3327--3332},
+  year={2007},
+  organization={IEEE}
+}
+
+@inproceedings{srivastavaetal2014icra,
+  title = {Combined Task and Motion Planning through an Extensible Planner-Independent Interface Layer},
+  author = {Siddharth Srivastava and Eugene Fang and Lorenzo Riano and Rohan Chitnis and Stuart Russell and Pieter Abbeel},
+  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)},
+  year  = 2014
+}
+
+@incollection{nieuwenhuisen2008effective,
+  title={An effective framework for path planning amidst movable obstacles},
+  author={Nieuwenhuisen, Dennis and van der Stappen, A Frank and Overmars, Mark H},
+  booktitle={Algorithmic Foundation of Robotics VII},
+  pages={87--102},
+  year={2008},
+  publisher={Springer}
+}
+
+@book{lavalle2006planning,
+  author       = {S. M. LaValle},
+  title        = {Planning Algorithms},
+  publisher    = {Cambridge University Press},
+  address      = {Cambridge, U.K.},
+  note         = {Available at http://planning.cs.uiuc.edu/},
+  year         = {2006}
+}
+
+@article{ompl2012,
+    Author = {Ioan A. {\c{S}}ucan and Mark Moll and Lydia E. Kavraki},
+    Doi = {10.1109/MRA.2012.2205651},
+    Journal = {{IEEE} Robotics \& Automation Magazine},
+    Month = {December},
+    Number = {4},
+    Pages = {72--82},
+    Title = {The {O}pen {M}otion {P}lanning {L}ibrary},
+    Note = {\url{https://ompl.kavrakilab.org}},
+    Volume = {19},
+    Year = {2012}
+}
+
+@phdthesis{diankov_thesis,
+ author = "Rosen Diankov",
+ title = "Automated Construction of Robotic Manipulation Programs",
+ school = "Carnegie Mellon University, Robotics Institute",
+ month = "August",
+ year = "2010",
+ number= "CMU-RI-TR-10-29",
+ url={http://www.programmingvision.com/rosen_diankov_thesis.pdf},
+}
+
+@inproceedings{schmitt19icra,
+  author = {Philipp S. Schmitt and Florian Wirnshofer and Kai M. Wurm and Georg V. Wichert and Wolfram Burgard},
+  title = {Modeling and Planning Manipulation in Dynamic Environments},
+  booktitle = {2019 IEEE International Conference on Robotics and Automation (ICRA)},
+  year = 2019,
+  url = {http://ais.informatik.uni-freiburg.de/publications/papers/schmitt19icra.pdf},
+  organization = {IEEE}
+}
+
+@Article{LerPha2015,
+  author = 	 {Puttichai Lertkultanon and Quang-Cuong Pham},
+  title = 	 {A single-query manipulation planner},
+  journal = 	 {IEEE Robotics and Automation Letters},
+  year = 	 2015,
+  volume = 	 1,
+  number = 	 1,
+  pages = 	 {198--205}}
+
+@InProceedings{GhaCorSim2009,
+  author = 	 {Mamoun Gharbi and Juan Cort\'es and and Thierry Sim\'eon},
+  title = 	 {Roadmap Composition for Multi-Arm Systems Path Planning},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year = 	 2009,
+  address = 	 {Saint-Louis, USA}}
+
+@InProceedings{HarTsuLau2014,
+  author = {K. Harada and T. Tsuji and J.-P. Laumond},
+  title = {A Manipulation Motion Planner for Dual-Arm Industrial Manipulators. In Proceedings of},
+  booktitle = {IEEE International Conference on Robotics and Automation},
+  year = 2014,
+  address = {Hongkong, China},
+  pages = {928-–934}}
+
+@InProceedings{KroBek2015,
+  author = 	 {Athanasios Krontiris and Kostas Bekris},
+  title = 	 {Dealing with Difficult Instances of Object Rearrangement},
+  booktitle = {Robotics Science and Systems},
+  year = 	 2015,
+  address = 	 {Roma, Italy}}
+
+
+
+@InProceedings{DobBek2015,
+  author = 	 {Andrew Dobson and Kostas Bekris},
+  title = 	 {Planning Representations and Algorithms for Prehensile Multi-Arm Manipulation},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year = 	 2015,
+  address = 	 {Hamburg, Germany}}
+
+@article{XiaLerPha2017,
+  author={Z. {Xian} and P. {Lertkultanon} and Q. {Pham}},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Closed-Chain Manipulation of Large Objects by Multi-Arm Robotic Systems}, 
+  year={2017},
+  volume={2},
+  number={4},
+  pages={1832-1839}
+  }
+
+@Article{simeon2004ijrr,
+  author = 	 {Thierry Siméon and Jean-Paul Laumond and Juan Cort\'{e}s and Anis Sahbani},
+  title = 	 {Manipulation Planning with Probabilistic Roadmaps},
+  journal = 	 {International Journal of Robotics Research},
+  year = 	 2004,
+  volume = 	 23,
+  number = 	 {7/8},
+  month = 	 {July}}
+
+@article{tb-rrt2016,
+  title={Tangent bundle RRT: A randomized algorithm for constrained motion planning},
+  author={Beobkyoon Kim and T. T. Um and C. Suh and F. Park},
+  journal={Robotica},
+  year={2016},
+  volume={34},
+  pages={202-225}
+}
+
+@article{cambon:hal-01976081,
+  TITLE = {{A Hybrid Approach to Intricate Motion, Manipulation and Task Planning}},
+  AUTHOR = {Cambon, St{\'e}phane and Alami, Rachid and Gravot, Fabien},
+  URL = {https://hal.laas.fr/hal-01976081},
+  JOURNAL = {{The International Journal of Robotics Research}},
+  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 09345},
+  PUBLISHER = {{SAGE Publications}},
+  VOLUME = {28},
+  NUMBER = {1},
+  PAGES = {104-126},
+  YEAR = {2009},
+  MONTH = Jan,
+  KEYWORDS = {planning formalism ; task planning ; motion planning ; manipulation planning},
+  PDF = {https://hal.laas.fr/hal-01976081/file/2009-ijrr-cambon-report.pdf},
+  HAL_ID = {hal-01976081},
+  HAL_VERSION = {v1},
+}
+
+@Article{SimLauNis00,
+  author = 	 {T.~Simeon and J.-P. Laumond and C.~Nissoux},
+  title = 	 {Visibility-based probabilistic roadmaps for motion planning},
+  journal = 	 {Journal of Advanced Robotics},
+  year = 	 2000,
+  volume =	 14,
+  number =	 6,
+  pages =	 {477--494}
+}
+
+@InProceedings{18-toussaint-RSS,
+title = {Differentiable Physics and Stable Modes for Tool-Use and
+Manipulation Planning},
+author  = {Marc Toussaint and Kelsey R Allen and Kevin A Smith and
+Josh B Tenenbaum},
+booktitle  = {Proc{.} of Robotics: Science and Systems (R:SS 2018)},
+note = {\emph{Best Paper Award}},
+year = {2018},
+youtube  = {-L4tCIGXKBE}
+}
+
+@article{HauNgt2011,
+author = {Kris Hauser and Victor Ng-Thow-Hing},
+title ={Randomized multi-modal motion planning for a humanoid robot manipulation task},
+journal = {The International Journal of Robotics Research},
+volume = {30},
+number = {6},
+pages = {678-698},
+year = {2011},
+URL = {http://motion.pratt.duke.edu/papers/ijrr2011-MultiModal-preprint.pdf},
+}
+
+@Article{CefOri2019,
+  author =       {Cefalo, Massimo and Oriolo, Giuseppe},
+  title =        {A general framework for task-constrained motion planning with moving obstacles},
+  journal =      {Robotica},
+  year =         2019,
+  volume =    37,
+  pages =     {575--598},
+  url = {http://www.dis.uniroma1.it/~labrob/pub/papers/Robotica19.pdf}
+  }
+
