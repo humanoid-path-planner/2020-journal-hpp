@@ -1,0 +1,14 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DISPLAY=:0
+ENV QT_X11_NO_MITSHM=1
+
+RUN apt update -y && apt install software-properties-common
+RUN add-apt-repository ppa:openrave/release
+
+RUN apt update -y && apt install -y emacs openrave
+
+COPY . .
+RUN chmod u+x install-ompl-ubuntu.sh
+RUN ./install-ompl-ubuntu.sh --app

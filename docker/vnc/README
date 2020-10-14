@@ -1,0 +1,5 @@
+Open docker.html in a browser from this directory. You will get information
+on how to run HPP benchmarks in a docker container.
+
+If you are unable to run HPP with docker, you can look into directory movie for
+some paths computed on various systems.

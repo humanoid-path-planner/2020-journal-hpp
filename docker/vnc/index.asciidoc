@@ -1,0 +1,117 @@
+:imagesdir: figures
+:toc: 
+
+Humanoid Path Planner
+=====================
+
+== Introduction
+
+This virtual machine illustrates the software platform https://humanoid-path-planner.github.io/hpp-doc/[Humanoid Path Planner]. It provides a few examples and
+makes possible to replicate the results presented in papers based on this
+software platform.
+
+== Benchmark
+
+In this section, we explain how to run the experimental results.
+The available use cases are the following:
+
+[width="50%"]
+|===
+| *benchmark*               | *type of problem*           | *algorithm*
+| baxter-manipulation-boxes | manipulation planning       | M-RRT       
+| construction-set          | manipulation planning       | dedicated algorithm
+| pr2-in-iai-kitchen        | motion planning             | Bi-RRT       
+| pr2-manipulation-kitchen  | manipulation planning       | M-RRT       
+| pr2-manipulation-two-hand | manipulation planning       | M-RRT       
+| romeo-placard             | manipulation planning       | M-RRT       
+| ur3-spheres               | manipulation planning       | M-RRT       
+|===
+
+Note that *hrp2-on-the-ground* cannot be run because the model of the robot
+is not public.
+
+To run the benchmarks, you need to open 3 terminals and go into the right
+directory:
+[source, bash]
+----
+cd $DEVEL_HPP_DIR/src/hpp_benchmark/future
+----
+In the first terminal, launch the server
+
+[source, bash]
+----
+hppcorbaserver
+----
+
+In the second terminal, choose the use case you want to run
+
+[source, bash]
+----
+cd baxter-manipulation-boxes
+python -i script.py
+----
+After a while, you shoud see in the terminal two lines for each problem resolution:
+[source, bash]
+----
+0:00:12.581471
+Number nodes: 262
+----
+This corresponds to the time of computation and the number of nodes produced to
+solve the problem. Here 12.58 seconds.
+
+In the third terminal, run gepetto-gui
+[source, bash]
+----
+gepetto-gui
+----
+
+You should see the following window:
+
+image::gepetto-gui-0.png[gepetto-gui,300,300]
+
+Once the second terminal prompts again, create a client to the viewer.
+[source, python]
+----
+v = vf.createViewer()
+----
+The 3D view of gepetto-gui window may be black.
+
+[width="25%"]
+image::gepetto-gui-1.png[If the 3D view is black, click in the window and hit space,300,200]
+
+Click in the window and hit space to make the point of view change.
+
+[width="25%"]
+image::gepetto-gui-2.png[If the 3D view is black, click in the window and hit space,300,200]
+
+=== Displaying planned paths and constraint graphs
+
+To display the planned path,
+
+* select "Path Player" in menu "Window", you should see a widget in gepetto-gui,
+* click on "Reset connections",
+* click on "Refresh".
+
+In the "Path Player widget", select the path id between 0 and 19 (19 by default)
+and click on the play button to display the path.
+
+To display the constraint graph,
+
+* select "Constraint Graph" in menu "Window".
+
+[TIP]
+====
+gepetto-gui is based on Qt. You can extract each widget from the main window, or put some widgets in different tabs for more clarity.
+====
+
+== Tutorial
+
+package file:///opt/openrobots/share/doc/hpp_tutorial/doxygen-html/index.html[+hpp-tutorial+] provides some tutorials explaining how to use and extend
+HPP. To get hands on manipulation planning, follow instruction in file:///opt/openrobots/share/doc/hpp_tutorial/doxygen-html/hpp_tutorial_tutorial_3.html[tutorial 3].
+
+Note that you need to go into the right directory to run the tutorial
+[source, bash]
+----
+cd $DEVEL_HPP_DIR/src/hpp_tutorial
+----
+

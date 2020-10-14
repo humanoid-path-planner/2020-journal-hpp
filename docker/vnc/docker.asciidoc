@@ -1,0 +1,61 @@
+:imagesdir: figures
+:toc: 
+
+How to run HPP in docker
+========================
+
+== Introduction
+
+docker containers do not always interact properly with 3D visualization and
+window management. Trying to run the same image on different machines, we have
+experienced wrong behaviors, from graphical interfaces where the button do not
+appear to crashes when starting 3D visualization.
+
+To make your HPP experience more robust, we use VNC (Virtual Network Computing)
+to forward X display from the docker container to your host machine.
+
+== Installation
+
+=== docker
+
+First, you need to install docker on your machine. Go to https://docs.docker.com/engine/install, select your OS and follow the instructions.
+
+=== docker image
+
+Download the docker image
+[source, bash]
+----
+docker pull gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/hpp-4.10
+----
+
+In a terminal, type
+[source, bash]
+----
+docker run --cap-add NET_ADMIN --rm -p 5901:5901 --name hpp -it gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/hpp-4.10
+----
+
+This opens a terminal called _container_ in the virtual machine.
+In this latter terminal, type:
+[source, bash]
+----
+tigervncserver -localhost no
+----
+then select a password.
+Answer no to the question "Would you like to enter a view-only password (y/n)?".
+
+In a terminal on the host machine, copy the password file on the local disk and
+launch the VNC client:
+[source, bash]
+----
+docker cp hpp:/root/.vnc/passwd .
+vncviewer -SecurityTypes VncAuth,TLSVnc -passwd passwd :1
+----
+You should see the following window:
+
+image::xfce-small.png[Session in the docker container,300,200]
+
+Open a terminal by right clicking in the window and run
+[source, bash]
+----
+midori /vnc/index.html
+----

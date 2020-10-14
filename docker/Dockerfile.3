@@ -1,0 +1,11 @@
+FROM flamiraux/hpp-4.10-2
+
+COPY . .
+#CMD ["midori", "index.html"]
+
+RUN mkdir ~/.vnc \
+ && echo "#!/bin/sh\nstartxfce4" > ~/.vnc/xstartup \
+ && chmod +x ~/.vnc/xstartup
+
+#ENV DISPLAY=:0
+#ENV QT_X11_NO_MITSHM=1

@@ -1,0 +1,13 @@
+FROM flamiraux/ompl-1
+
+RUN apt install -y 
+
+ENV INSTALL_HPP_DIR=/workspace/install
+COPY . .
+
+RUN mkdir -p /workspace/src
+RUN mv omplapp-1.5.0-Source.tar.gz /workspace/src
+RUN cd /workspace/src && tar xvf omplapp-1.5.0-Source.tar.gz
+RUN mkdir /workspace/src/omplapp-1.5.0-Source/build
+#RUN cd /workspace/src/omplapp-1.5.0-Source/build && cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_HPP_DIR ..
+#RUN cd /workspace/src/omplapp-1.5.0-Source/build && make install

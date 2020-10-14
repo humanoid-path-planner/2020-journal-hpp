@@ -1,0 +1,6 @@
+FROM flamiraux/hpp-4.10-1
+
+RUN echo "export DEVEL_HPP_DIR=/workspace" >> /root/.bashrc
+RUN echo "source \$DEVEL_HPP_DIR/config.sh" >> /root/.bashrc
+
+RUN cd /workspace/src && make hpp_tutorial.checkout hpp_benchmark.checkout iai_maps.install hpp-universal-robot.install hpp-baxter.install
