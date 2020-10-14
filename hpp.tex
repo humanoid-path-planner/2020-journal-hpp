@@ -1671,3 +1671,23 @@ For this reason, M-RRT is not able to solve the construction set
 problem in a reasonable amount of time. It remains to our knowledge
 the only algorithm in the literature able to solve a variety of
 problems as large as those exposed in this section.
+
+\section{Conclusion and future work}
+
+This paper presents a software platform aimed at prototyping and solving
+prehensile manipulation planning problems. The platform provide an original
+algorithm M-RRT that is an extension of RRT exploring the leaves of the
+foliation defined by the manipulation constraints. The automatic insertion
+of way point states make the resolution more efficient and the resulting paths
+more natural.
+
+We think that this platform is a perfect basis for researchers who want to
+develop and benchmark new manpulation planning algorithms.
+
+To show the maturity of the project, we provide a docker image embarking the
+software.
+
+As a future work, we aim at working on general manipulation planning algorithms
+that can handle use cases as diverse as those proposed in the benchmark section.
+A good candidate is a generalization of RMR*~\cite{schmitt17icra}. We also aim at working on manipulation path optimization since paths computed by
+random algorithms are too long to be applied on real robots as such.
