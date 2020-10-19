@@ -16,6 +16,14 @@ to forward X display from the docker container to your host machine.
 
 == Installation
 
+=== VNC client
+
+Install Tiger VNC client:
+
+* https://tigervnc.en.lo4d.com/windows[for Windows]
+* https://www.macupdate.com/app/mac/60678/tigervnc[for Mac]
+* https://tigervnc.org[for Linux]
+
 === docker
 
 First, you need to install docker on your machine. Go to https://docs.docker.com/engine/install, select your OS and follow the instructions.

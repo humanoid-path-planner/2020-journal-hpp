@@ -57,7 +57,15 @@ After a while, you shoud see in the terminal two lines for each problem resoluti
 Number nodes: 262
 ----
 This corresponds to the time of computation and the number of nodes produced to
-solve the problem. Here 12.58 seconds.
+solve the problem. Here 12.58 seconds. After 20 problem resolutions, the average
+time of computation and number of nodes is displayed and the terminal prompts
+again.
+
+[TIP]
+====
+If you want to run only one problem resolution, type
+`python -i script.py -N 1`
+====
 
 In the third terminal, run gepetto-gui
 [source, bash]
@@ -88,16 +96,16 @@ image::gepetto-gui-2.png[If the 3D view is black, click in the window and hit sp
 
 To display the planned path,
 
-* select "Path Player" in menu "Window", you should see a widget in gepetto-gui,
-* click on "Reset connections",
-* click on "Refresh".
+* select menu item "*Window -> Path Player*", you should see a widget in gepetto-gui,
+* click on "*Reset connections*",
+* click on "*Refresh*".
 
-In the "Path Player widget", select the path id between 0 and 19 (19 by default)
+In the "*Path Player*" widget, select the path id between 0 and 19 (19 by default)
 and click on the play button to display the path.
 
 To display the constraint graph,
 
-* select "Constraint Graph" in menu "Window".
+* select menu item "*Window -> Constraint Graph*".
 
 [TIP]
 ====
