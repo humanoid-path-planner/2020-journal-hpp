@@ -339,7 +339,7 @@ This operator is represented by a matrix with $nv_2$ lines and $nv_1$ columns, w
 
 \subsection{Newton based solver}
 
-It is sometimes useful to produce a configuration $\conf$ that satisfies a constraint (or a set of constraints) of type~(\ref{eq:constraint}) from a configuration $\conf_0$ that does not. This action is called the \textit{projection of $\conf_0$ onto the submanifold defined by the constraint} and is performed by a numerical solver that iteratively linearizes the constraint as follows:
+It is sometimes useful to produce a configuration $\conf$ that satisfies a constraint (or a set of constraints) of type~(\ref{eq:constraint}) from a configuration $\conf_0$ that does not. This action is called the \textit{projection of $\conf_0$ onto the submanifold defined by the constraint} and is performed by a Gauss-Newton solver~\cite[Chapter~10]{NoceWrig06} that iteratively linearizes the constraint as follows:
 $$
 h(\conf_{i+1}) \approx h(\conf_i) + \frac{\partial h}{\partial \conf}(\conf_{i})(\conf_{i+1}-\conf_i) = 0
 $$
@@ -360,14 +360,13 @@ Note that to define a new constraint, the user needs to derive class \href{https
 
 In manipulation planning applications, where robots manipulate objects, once an object is grasped, the position of the object can be computed explicitely from the configuration of the robot. In this case, some configuration variables of the system depend on other:
 $$
-\conf=(\conf_{rob},\conf_{obj})\in\CS,\ \ \ \ \conf_{obj} = g_{grasp}(\conf{rob}).
+\conf=(\conf_{rob},\conf_{obj})\in\CS,\ \ \ \ \conf_{obj} = g_{grasp}(\conf_{rob}).
 $$
 Although this constraint may fit definition~(\ref{eq:constraint}) by defining
 \begin{equation}\label{eq:explicit-grasp}
 h(\conf) \triangleq \conf_{obj} \ominus g_{grasp}(\conf_{rob}),
 \end{equation}
 solving this constraint possibly with other constraints using an iterative scheme~(\ref{eq:HierarchicalIterative}) is obviously sub-optimal.
-Notice that the right hand side of~(\ref{eq:explicit-grasp}) is the $\log$ of the pose of the object when grasped, with respect to the actual pose of the object.
 
 More generally, let us denote by
 \begin {itemize}
