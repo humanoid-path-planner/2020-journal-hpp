@@ -144,7 +144,7 @@ robot_model_py_repository=${LAAS_REPO}
 iai_maps_branch=master
 iai_maps_repository=${HPP_REPO}
 
-hpp_benchmark_branch=v4.10.0
+hpp_benchmark_branch=ijrr2020
 hpp_benchmark_repository=${HPP_REPO}
 
 hpp-environments_branch=v4.9.0
