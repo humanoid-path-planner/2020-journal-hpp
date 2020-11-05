@@ -12,17 +12,10 @@ experienced wrong behaviors, from graphical interfaces where the button do not
 appear to crashes when starting 3D visualization.
 
 To make your HPP experience more robust, we use VNC (Virtual Network Computing)
-to forward X display from the docker container to your host machine.
+to forward X display from the docker container to your favorite web browser on
+your host machine.
 
 == Installation
-
-=== VNC client
-
-Install Tiger VNC client:
-
-* https://tigervnc.en.lo4d.com/windows[for Windows]
-* https://www.macupdate.com/app/mac/60678/tigervnc[for Mac]
-* https://tigervnc.org[for Linux]
 
 === docker
 
@@ -36,28 +29,17 @@ Download the docker image
 docker pull gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/hpp-4.10
 ----
 
-In a terminal, type
+In a terminal (under Linux and MacOS, for Windows, there should be a graphical
+interface), type
 [source, bash]
 ----
-docker run --cap-add NET_ADMIN --rm -p 5901:5901 --name hpp -it gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/hpp-4.10
+docker run --rm -it -p 6080:6080 --name hpp gitlab.laas.fr:4567/humanoid-path-planner/hpp-doc/hpp-4.10
 ----
 
-This opens a terminal called _container_ in the virtual machine.
-In this latter terminal, type:
-[source, bash]
-----
-tigervncserver -localhost no
-----
-then select a password.
-Answer no to the question "Would you like to enter a view-only password (y/n)?".
+This starts a docker container and creates a VNC server inside.
 
-In a terminal on the host machine, copy the password file on the local disk and
-launch the VNC client:
-[source, bash]
-----
-docker cp hpp:/root/.vnc/passwd .
-vncviewer -SecurityTypes VncAuth,TLSVnc -passwd passwd :1
-----
+In a web browser, open the following URL: http://localhost:6080/vnc.html?host=localhost&port=6080, and click on "Connect" without entering any password.
+
 You should see the following window:
 
 image::xfce-small.png[Session in the docker container,300,200]

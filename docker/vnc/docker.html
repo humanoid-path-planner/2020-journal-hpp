@@ -749,33 +749,13 @@ window management. Trying to run the same image on different machines, we have
 experienced wrong behaviors, from graphical interfaces where the button do not
 appear to crashes when starting 3D visualization.</p></div>
 <div class="paragraph"><p>To make your HPP experience more robust, we use VNC (Virtual Network Computing)
-to forward X display from the docker container to your host machine.</p></div>
+to forward X display from the docker container to your favorite web browser on
+your host machine.</p></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_installation">Installation</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_vnc_client">VNC client</h3>
-<div class="paragraph"><p>Install Tiger VNC client:</p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-<a href="https://tigervnc.en.lo4d.com/windows">for Windows</a>
-</p>
-</li>
-<li>
-<p>
-<a href="https://www.macupdate.com/app/mac/60678/tigervnc">for Mac</a>
-</p>
-</li>
-<li>
-<p>
-<a href="https://tigervnc.org">for Linux</a>
-</p>
-</li>
-</ul></div>
-</div>
 <div class="sect2">
 <h3 id="_docker">docker</h3>
 <div class="paragraph"><p>First, you need to install docker on your machine. Go to <a href="https://docs.docker.com/engine/install">https://docs.docker.com/engine/install</a>, select your OS and follow the instructions.</p></div>
@@ -789,32 +769,16 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>docker pull gitlab<span style="color: #990000">.</span>laas<span style="color: #990000">.</span>fr<span style="color: #990000">:</span><span style="color: #993399">4567</span>/humanoid-path-planner/hpp-doc/hpp-<span style="color: #993399">4.10</span></tt></pre></div></div>
-<div class="paragraph"><p>In a terminal, type</p></div>
+<div class="paragraph"><p>In a terminal (under Linux and MacOS, for Windows, there should be a graphical
+interface), type</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>docker run --cap-add NET_ADMIN --rm -p <span style="color: #993399">5901</span><span style="color: #990000">:</span><span style="color: #993399">5901</span> --name hpp -it gitlab<span style="color: #990000">.</span>laas<span style="color: #990000">.</span>fr<span style="color: #990000">:</span><span style="color: #993399">4567</span>/humanoid-path-planner/hpp-doc/hpp-<span style="color: #993399">4.10</span></tt></pre></div></div>
-<div class="paragraph"><p>This opens a terminal called <em>container</em> in the virtual machine.
-In this latter terminal, type:</p></div>
-<div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight
-by Lorenzo Bettini
-http://www.lorenzobettini.it
-http://www.gnu.org/software/src-highlite -->
-<pre><tt>tigervncserver -localhost no</tt></pre></div></div>
-<div class="paragraph"><p>then select a password.
-Answer no to the question "Would you like to enter a view-only password (y/n)?".</p></div>
-<div class="paragraph"><p>In a terminal on the host machine, copy the password file on the local disk and
-launch the VNC client:</p></div>
-<div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight
-by Lorenzo Bettini
-http://www.lorenzobettini.it
-http://www.gnu.org/software/src-highlite -->
-<pre><tt>docker cp hpp<span style="color: #990000">:</span>/root<span style="color: #990000">/.</span>vnc/passwd <span style="color: #990000">.</span>
-vncviewer -SecurityTypes VncAuth<span style="color: #990000">,</span>TLSVnc -passwd passwd <span style="color: #990000">:</span><span style="color: #993399">1</span></tt></pre></div></div>
+<pre><tt>docker run --rm -it -p <span style="color: #993399">6080</span><span style="color: #990000">:</span><span style="color: #993399">6080</span> --name hpp gitlab<span style="color: #990000">.</span>laas<span style="color: #990000">.</span>fr<span style="color: #990000">:</span><span style="color: #993399">4567</span>/humanoid-path-planner/hpp-doc/hpp-<span style="color: #993399">4.10</span></tt></pre></div></div>
+<div class="paragraph"><p>This starts a docker container and creates a VNC server inside.</p></div>
+<div class="paragraph"><p>In a web browser, open the following URL: <a href="http://localhost:6080/vnc.html?host=localhost&amp;port=6080">http://localhost:6080/vnc.html?host=localhost&amp;port=6080</a>, and click on "Connect" without entering any password.</p></div>
 <div class="paragraph"><p>You should see the following window:</p></div>
 <div class="imageblock">
 <div class="content">
@@ -836,7 +800,7 @@ http://www.gnu.org/software/src-highlite -->
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2020-10-16 14:21:56 CEST
+ 2020-11-03 14:40:17 CET
 </div>
 </div>
 </body>
