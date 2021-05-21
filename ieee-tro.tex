@@ -66,7 +66,7 @@
 
 \input{new-command}
 \newtheorem{definition}{Definition}
-
+\pdfminorversion=4
 
 
 % Some very useful LaTeX packages include:
@@ -415,7 +415,14 @@ Corresponding author: F. Lamiraux (email: florent.lamiraux@laas.fr}}
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-The abstract goes here.
+  This paper presents a software platform taylored for prehensile manipulation
+  planning named Humanoid Path Planner. The platform implements an original way
+  of modelling manipulation planning through a constraint graph that represents
+  the numerical constraints that define the manipulation problem. We propose an
+  extension of RRT algorithm to manipulation planning that is able to solve a
+  large variety of problems. We provide replicable experimental results via a
+  docker image that readers may download to run the experimental results by
+  themselves.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -500,22 +507,19 @@ This work has been partially supported by Airbus S.A.S. in the framework of the 
 %\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
-
 % if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%% \begin{IEEEbiographynophoto}{Florent Lamiraux}
+%% Biography text here.
+%% \end{IEEEbiographynophoto}
+
+%% % if you will not have a photo at all:
+%% \begin{IEEEbiographynophoto}{Joseph Mirabel}
+%% Biography text here.
+%% \end{IEEEbiographynophoto}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
-
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
