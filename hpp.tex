@@ -690,21 +690,21 @@ We denote by $o_i(\conf)$ and $f_j(\conf)$ the poses in configuration $\conf$ of
 \end{equation}
 The contact constraint is defined by the following piece-wise differentiable function:
 \begin{equation}\label{eq:convex-shape-contact}
-h(\conf) = \left\{\begin{array}{lll}(\bar{h}_1,0,0,\bar{h}_4,\bar{h}_5)&
+h(\conf) = \left\{\begin{array}{lll}(\bar{h}_1,0,0,\bar{h}_5,\bar{h}_6)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ inside } f_j\\
-(\bar{h}_1,\bar{h}_2,\bar{h}_3,\bar{h}_4,\bar{h}_5)&
+(\bar{h}_1,\bar{h}_2,\bar{h}_3,\bar{h}_5,\bar{h}_6)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ outside } f_j\end{array}\right.
 \end{equation}
 It is straightforward that the above function vanishes if and only if two convex polygons $o_i$ and $f_j$ are in contact and $C_{o_i}$ is inside $f_j$.
 
 As for grasps, we need to define a parameterized complement constraint for the contact constraint in order to specify the sub-manifold of configurations that are reachable from one configuration while keeping the object in a constant stable pose. The naive way consists in defining
 $$
-h_{comp}(\conf) = \left\{\begin{array}{lll}(\bar{h}_2,\bar{h}_3,\bar{h}_6)&
+h_{comp}(\conf) = \left\{\begin{array}{lll}(\bar{h}_2,\bar{h}_3,\bar{h}_4)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ inside } f_j\\
-(0,0,\bar{h}_6)&
+(0,0,\bar{h}_4)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ outside } f_j\end{array}\right.
 $$
-$\bar{h}_2$, $\bar{h}_3$, $\bar{h}_6$ respectively represent the translation in $x-y$ plane and the rotation around $z$-axis of frame $o_i$ with respect to frame $f_j$. Let $\conf_0$ be a configuration such that $h(\conf_0)=0$. The sub-manifold defined by
+$\bar{h}_2$, $\bar{h}_3$, $\bar{h}_4$ respectively represent the translation in $y-z$ plane and the rotation around $x$-axis of frame $o_i$ with respect to frame $f_j$. Let $\conf_0$ be a configuration such that $h(\conf_0)=0$. The sub-manifold defined by
 \begin{equation}\label{eq:stable-pose}
 \left\{\conf\in\CS,\ \ h(\conf)=0\ \ h_{comp}(\conf) = h_{comp}(\conf_0) \right\}
 \end{equation}
@@ -712,11 +712,11 @@ contains one object pose for each pair of polygons $(o_i,f_j)$, and there are
 $|I| . |J|$ possible combinations. This constraint is therefore not suitable to
 enforce object immobility along a path since the object may jump from one pose to another one.
 
-To disambiguate the various combination of convex polygons that can be in contact, we define
+To disambiguate the various combinations of convex polygons that can be in contact, we define
 \begin{equation}\label{eq:convex-shape-contact-complement}
-h_{comp}(\conf) = \left\{\begin{array}{l}(\bar{h}_2 + 2jM,\bar{h}_3 + 2iM,\bar{h}_6)\\
+h_{comp}(\conf) = \left\{\begin{array}{l}(\bar{h}_2 + 2jM,\bar{h}_3 + 2iM,\bar{h}_4)\\
 \mbox{if } P(C_{o_i},f_j)\mbox{ inside } f_j\\
-(2jM,2iM,\bar{h}_6)\\
+(2jM,2iM,\bar{h}_4)\\
 \mbox{if } P(C_{o_i},f_j)\mbox{ outside } f_j\end{array}\right.
 \end{equation}
 where
@@ -728,10 +728,10 @@ With this definition, the sub-manifold defined by~(\ref{eq:stable-pose}), (\ref{
 \begin{align*}
   i &= \left\lfloor\frac{\bar{h}_3}{2M} + \frac{1}{2}\right\rfloor\\
   j &= \left\lfloor\frac{\bar{h}_2}{2M} + \frac{1}{2}\right\rfloor\\
-  \bar{h}_1 &= \bar{h}_4 = \bar{h}_5 = 0\\
+  \bar{h}_1 &= \bar{h}_5 = \bar{h}_6 = 0\\
   \bar{h}_2 &= h_{comp\ 1} - 2jM\\
   \bar{h}_3 &= h_{comp\ 2} - 2iM\\
-  \bar{h}_6 &= h_{comp\ 3}
+  \bar{h}_4 &= h_{comp\ 3}
 \end{align*}
 and from (\ref{eq:convex-shape-contact-hbar}),
 $$
