@@ -1,0 +1,212 @@
+\documentclass{article}
+\title{Paper IEEE-TRO 21-0184: reply to reviewers}
+\author{Florent Lamiraux and Joseph Mirabel}
+\date{}
+\begin{document}
+\maketitle
+\subsection*{Reviewer 7}
+\begin{enumerate}
+  \item \textbf{Comment.} The beginning of the main content of the
+    paper seems hard to follow for readers not familiar with
+    manipulation planning.  I think this could be easily improved by
+    adding one or two explanatory images earlier on in the
+    paper.\\
+    \textbf{Answer.} We agree that the first picture comes very lately in the
+    initial version of the paper. To improve the paper, we have moved Figure 2
+    at the beginning of the paper to provide quickly an example of manipulation
+    planning problem.
+\end{enumerate}
+
+\subsection*{Reviewer 9}
+\begin{enumerate}
+\item \textbf{Comment.} In the modeling of SE(2) and SO(2), why using 2
+  coordinates for the angular position (sin and cos)? In 2D, using just one
+  coordinate (the unique rotation angle) is not enough?\\
+  \textbf{Answer.} Using $(\sin\theta,\cos\theta)$ makes the parameterization
+  continuous. We added a comment in the paper.
+
+\item \textbf{Comment.} A bit after equation (3), the unnumbered
+  equation $q(t)=\cdots$ is the minus sign correct? Should it be the
+  operator defined in equation (3)?
+  \textbf{Answer.} You are perfectly right. We fixed the error.
+
+\item \textbf{Comment.} I think that some words are supposed to be
+  hyperlinks, like ``here''. They do not work.\\
+  \textbf{Answer.} You
+  are right, there are many hyperlinks in the paper. We checked them
+  one by one and found that they all work.
+
+\item \textbf{Comment.}  Algorithm 1: Line 6 checks whether any output
+  variable of E is already computed by a previous explicit
+  constraint. What if two explicit constraints are redundant? For
+  instance, if we have two constraints that (in addition to other
+  configuration variables) set the same identical constraint to the
+  same config variable.  \\
+  \textbf{Answer.} As stated at the beginning of Paragraph IV.D.a, "when an
+  explicit constraint is not successfully added following Algorithm 1, it is
+  handled as an implicit constraint."
+
+\item \textbf{Comment.} what happens if you detect that a projected
+  path is not continuous?\\
+  \textbf{Answer.} In this case, only a
+  continuous part starting at the beginning of the path is used by the
+  M-RRT algorithm. We have added a remark in paragraph and in IV.E.1
+  Algorithm 4.
+
+\item \textbf{Comment.} Has the final configuration to be fully
+  described? E.g., can I provide just a final desired object pose in
+  the cartesian space but not specify the corresponding robot inverse
+  kinematic solution (that could be not unique)?\\
+  \textbf{Answer.}
+  The M-RRT algorithm as of today is not able to define the goal state
+  by some constraints, although it would not be difficult to modify
+  it for that. However, the python bindings enable users to quickly develop
+  new algorithms where the goal can be defined by some constraints. In the
+  construction set example described in Section VII.B.2) and in Figure 13, the
+  goal is a state of the constraint graph.  
+
+\item \textbf{Comment.} Section V.A Grasp: the equation at the
+  beginning. Should it be $C = C_{r_1} \times \cdots \times C_{r_{nr}} \times
+  SE(3)^{no}$? (I added the dots).\\
+  \textbf{Answer.} You are perfectly right. We fixed the error.
+
+\item \textbf{Comment.} In equation (13) (and also in other
+  equations), is $R^3 \times SO(3)$ the same as $SE(3)$?\\
+  \textbf{Answer.} They both represent rigid-body motion but they have different
+  Lie group operators. We have added a paragraph after Equation (13) to clarify
+  this point.
+
+\item \textbf{Comment.} The constraint that arises from the stable
+  contact pose is piece-wise differentiable. While in the previous
+  section the constraints are required to be differentiable. Is there
+  any issue?\\
+  \textbf{Answer.} Piece-wise differentiable is enough. We have replaced all
+  instances of "differentiable" by "piece-wise differentiable".
+
+\item \textbf{Comment.} Section D, after a) Number of states, there is an extra :.\\
+  \textbf{Answer.} This has been fixed.
+
+\item \textbf{Comment.}   The used PC has 23 MB of RAM and 3GB of cache. Please
+  check these numbers.\\
+  \textbf{Answer.} This is 32 GB of RAM and 3 GB of cache. This has been fixed.
+
+\item \textbf{Comment.} I think that Figure 9 is not cited in the text.\\
+  \textbf{Answer.} This has been fixed.
+  
+\item \textbf{Comment.}  Since the paths are continuous, how is the
+  collision checking carried out? Moreover, If I well understand,
+  during the waypoint transition the collision checker is not
+  called. Is it implicitly assumed here that in such transitions there
+  is no collision?\\
+  \textbf{Answer.} The software platform proposes discretized collision checking
+  as well as continuous collision checking. We added a sentence and a reference
+  in the description of the framework. Collisions are checked also along
+  waypoint transitions. We added the word "almost" at the end of Section VII-B3). Since the sentence was confusing.
+\end{enumerate}
+
+\subsection*{Reviewer 16}
+\begin{enumerate}
+\item \textbf{Comment.} In the literature survey, it may be good to refer to
+  the paper by Lozano-Perez and Kaelbling
+  (https://lis.csail.mit.edu/pubs/tlpk-iros14.pdf) because it very much is
+  related to representing manipulation planning problems with constraint graphs.\\
+  \textbf{Answer.} Although we had already cited 2 papers from this team, we
+  have added the requested reference.
+
+\item \textbf{Comment.} Towards the end of Section III, the paper says
+  "We denote by $iq_i$ and $iv_i$ the indices of joint $i$ ...". But there
+  are multiple indices of joint $i$ (namely $nq_i$ and $nv_i$ many). So
+  maybe the sentence should say "the starting (or first?) indices of
+  joint i">\\
+  \textbf{Answer.} You are right. This has been fixed.
+
+\item \textbf{Comment.} At the end of Section IV-B, the paper refers
+  to different linesearch methods implemented. It may make sense to
+  briefly describe what these different methods do, or give a
+  reference next to each, so that the reader can understand what they
+  refer to if interested.\\
+  \textbf{Answer.} We have added a reference for one of them and explanations
+  for the other ones.
+
+\item \textbf{Comment.} In Section IV-E, the paper says the
+  constraints are applied only during "path evaluation". It is not
+  perfectly clear what is meant by "path evaluation". What does
+  "evaluating" a path mean?\\
+  \textbf{Answer.} "Path evaluation" means "computing the configuration at a
+  given parameter". We have added this definition in the paper.
+
+\item \textbf{Comment.} In Section V, the paper defines the
+  manipulation problem, and as admissible configuration properties, I
+  wonder if it should also mention being "collision-free" as a
+  requirement. It is kind of obvious, but may be good to be
+  complete.\\
+  \textbf{Answer.} You are right. We added the absence of collision in the
+  definition of admissible configurations.
+
+\item \textbf{Comment.} At the beginning of Section V-A, the combined
+  configuration space is defined, but it seems to include only the
+  first and the last robot ($C_{r1}$ and $C_{rnr}$). Where are the other
+  robots in betwwen 1 and nr?\\ \textbf{Answer.} You are right. This has
+  been fixed.
+
+\item \textbf{Comment.} In Section V-A, the freedom of a grasp seems
+  to be defined only using binary true/false flags. Using this method,
+  is it possible to define limits? For example, for a cylinder, the
+  gripper may be able to slide up and down along the height of the
+  cylinder. Is it possible to represent using this approach, or would
+  one need to discretize along the height of the cylinder? It would be
+  good to state this explicitly (whether possible or not). (This
+  capability [e.g. limits on translation on a table] is also what is
+  needed for the "Stable contact pose" formalization in Section
+  V-B. This raises the question: is there really a need to have two
+  separate formalizations for hand-object and object-surface
+  attachments, or can there be one unified
+  formalization?)\\
+  \textbf{Answer.} Allowing a free translation along the axis of a cylindrical
+  object is possible using flags. However, the user needs to manually add
+  inequality constraints to limit this translation. We have added this case in
+  the paper with an explanation. Limits of translation are automatically
+  defined for contact surfaces by providing plane convex polygons. It seems
+  to us difficult to merge these two types of constraints.
+
+\item \textbf{Comment.} One nice trick in Simeon et al. [30] is the
+  "virtual closed chain" motions when an object is both on support
+  surface and is grasped. Is it possible to have similar solutions
+  using the formalization here?\\
+  \textbf{Answer.} The constraint graph formalism actually enables us to
+  generalize the reduction property in [30]. For instance, the benchmark
+  "Romeo placard" could be solved this way. To do so, we need to modify the
+  transition constraints when building the constraint graph.
+
+\item \textbf{Comment.} In the experimental results section (VII-B) it
+  would be good to state the dimensionality of the problems
+  (i.e. robot number of DoF and maybe even objects' number of DoF) as
+  that would put the planning times a bit more in
+  perspective.\\
+  \textbf{Answer.} We have added the number of degrees of freedom to each
+  benchmark.
+\end{enumerate}
+
+\subsection*{Associate editor}
+\begin{enumerate}
+\item \textbf{Comment.} In addition, given the importance of the
+  software framework, the authors are advised to make sure to provide
+  a link to the software repositories on github and to give a proper
+  visibility in the manuscript.\\ \textbf{Answer.} There was already a link
+  to the installation page, but we made it more visible in the introduction.
+\end{enumerate}
+
+\item \textbf{Comment.} Don't use citations as nouns like in "evoked
+  in [2]". Rather use "evoked by Mirabel~\emph{et al.}~\cite{...}.
+  Don't start a sentence with a citation like "[47] propose". This
+  would be fixed by the above change.\\
+  \textbf{answer.} We changed citations as requested.
+
+\item \textbf{Comment.} 
+Overall, this paper is substandard with respect to writing. The authors
+are strongly encouraged to carefully revise the writing and spelling of
+the paper. If this should not be corrected in the revised version, this
+paper will not be recommended for publication despite the contributions
+and this publication recommendation. The authors are encouraged to ask
+a native speaker for advise.\\ \textbf{Answer.}
+\end{document}
