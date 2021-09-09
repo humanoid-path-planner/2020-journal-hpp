@@ -671,7 +671,7 @@ The first three components of $\bar{h}(\conf)$ in equation~(\ref{eq:barh}) corre
   objects:
   \begin{align*}
     h &= (\bar{h}_1,\bar{h}_2,\bar{h}_4,\bar{h}_5),\\
-    h_{comp} &= (,\bar{h}_3,\bar{h}_6),
+    h_{comp} &= (\bar{h}_3,\bar{h}_6),
   \end{align*}
   however inequality constraints need to be added manually on $\bar{h}_3$ to
   limit the translation.
@@ -1494,7 +1494,7 @@ In this section, we report on several experimental results obtained
 with HPP software on constrained motion planning and on manipulation
 planning problems. The raw data can be found in
 \href{https://github.com/humanoid-path-planner/hpp_benchmark/tree/v4.10.0/2020-07-23}{\texttt{hpp\_benchmark}} package. Here we only present a few test cases.
-The benchmarks are run 20 times each on an Intel Core i7 at 2.60 GHz, with 32 Gigabytes of RAM and 3 Gigabytes of cache memory. For each test case, we report the minimum, maximum, mean and standard deviation of the time of computation on the one hand, and of the number of nodes in the roadmap built to solve the problem on the other.
+The benchmarks are run 20 times each on an Intel Core i7 at 2.60 GHz, with {\color{blue}32 Gigabytes of RAM and 3 Gigabytes of cache memory}. For each test case, we report the minimum, maximum, mean and standard deviation of the time of computation on the one hand, and of the number of nodes in the roadmap built to solve the problem on the other.
 
 \subsubsection{Constrained motion planning}
 
@@ -1757,4 +1757,6 @@ software.
 As a future work, we aim at working on general manipulation planning algorithms
 that can handle use cases as diverse as those proposed in the benchmark section.
 A good candidate is a generalization of RMR*~\cite{schmitt17icra}. Also we intend to focus on manipulation path optimization since paths computed by
-random algorithms are too long to be applied to real robots as such.
+random algorithms are too long to be applied to real robots as such. {\color{blue}Finally, we would like to generalize the reduction property proposed by Siméon
+  \textit{et al}~\cite{simeon2004ijrr} . The constraint graph representation is
+  a perfect tool for that.}
