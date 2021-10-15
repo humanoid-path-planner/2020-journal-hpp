@@ -13,7 +13,7 @@
 \end{figure}
 
 Today, robots in industrial manufacturing are mostly programmed by
-hand. They repeat the same motion thousands of times with a high
+hand. They repeat the same motion thousands of times with great
 accuracy. However, automating a task with some variability is very
 challenging since it requires more programming effort to integrate
 sensors and motion planning in the process. A good example of this difficulty is
@@ -36,24 +36,24 @@ The main contributions are:
   nonlinear constraints,
 \item an original solver for nonlinear constraints that can handle implicit and explicit constraints,
 \item a manipulation planning algorithm that tackles a great variety of manipulation planning problems,
-\item an open-source software suite that implements all the above following state-of-the-art development tools and methods.
+\item an open-source software suite that implements all the above, following state-of-the-art development tools and methods.
 \item a docker image of the aforementioned software with installation instructions provided with this paper. This image makes the experimental results replicable.
 \end{itemize}
 {\color{blue} Installation instructions can be found at \href{https://humanoid-path-planner.github.io/hpp-doc}{https://humanoid-path-planner.github.io/hpp-doc}.}
 This paper extends the work presented in {\color{blue} previous papers }\cite{mirabel-iros2016},\cite{MirLam2018} with the following new material:
 \begin{itemize}
 \item description of the configuration space as a Cartesian product of Lie groups (Section~\ref{partie:preliminary}),
-\item unified and detailed definition of the grasp and placement constraints that are only evoked in {\color{blue}Mirabel \textit{et al}}~\cite{mirabel-iros2016} (Section~\ref{sec:manipulation-problem}),
+\item unified and detailed definition of the grasp and placement constraints that are only mentioned in {\color{blue}Mirabel \textit{et al}}~\cite{mirabel-iros2016} (Section~\ref{sec:manipulation-problem}),
 \item automatic construction of the constraint graph (Section~\ref{sec:manipulation-problem}),
 \item the docker image of the software,
 \item a description of the software platform (Section~\ref{sec:humanoid-path-planner}),
-\item experimental results on several different problems.
+\item experimental results for several different problems.
 \end{itemize}
 
 The \paper is organized as follows. \Partie~\ref{sec:related-work} presents some related work for constrained motion planning and manipulation planning.
-\Partie~\ref{partie:preliminary} introduces some preliminary notions like kinematic chains and Lie groups that are used to model the configuration space of each joint. \Partie~\ref{sec:constraints} introduces nonlinear constraints and solvers that are at the core of manipulation problem definition. \Partie~\ref{sec:manipulation-problem} defines the problem of prehensile manipulation in the general setting. \Partie~\ref{sec:manipulation-planning} provides a general algorithm that solves manipulation planning problems. Finally, \partie~\ref{sec:humanoid-path-planner} is devoted to the software platform implementing the notions introduced in the previous sections. Experimental results are provided for a large variety of problems.
+\Partie~\ref{partie:preliminary} introduces some preliminary notions like kinematic chains and Lie groups that are used to model the configuration space of each joint. \Partie~\ref{sec:constraints} introduces nonlinear constraints and solvers that are at the core of manipulation problem definition. \Partie~\ref{sec:manipulation-problem} defines the problem of prehensile manipulation in the general setting. \Partie~\ref{sec:manipulation-planning} provides a general algorithm that solves manipulation planning problems. Finally, \Partie~\ref{sec:humanoid-path-planner} is devoted to the software platform implementing the notions introduced in the previous sections. Experimental results are provided for a large variety of problems.
 
-Each \partie is implemented by one or several software packages. For some values that need to be computed, instead of providing formulas, we sometimes provide a link to the C++ or python implementation.
+Each \partie is implemented by one or several software packages. For some values that need to be computed, rather than providing formulas, we sometimes give a link to the C++ or python implementation.
 
 \section{Related work}\label{sec:related-work}
 
@@ -72,8 +72,8 @@ been proposed~\cite{KarFra2011}.
 
 \subsection{Path planning with nonlinear constraints}
 
-Some systems are subject to nonlinear constraints. These nonlinear
-constraints define sub-manifolds of the configuration space the robot
+Some systems are subject to nonlinear constraints. These
+constraints define submanifolds of the configuration space the robot
 must stay on. For example, legged robots that must keep contact with
 the ground and enforce quasi-static equilibrium, or multi-arm systems
 grasping the same object are subject to this type of constraints. As the
@@ -112,7 +112,7 @@ The configuration space of the whole system is subject to
 nonlinear constraints due to the fact that objects cannot move by
 themselves and should stay in a stable pose when not grasped by a
 robot.  The accessible configuration space is thus a union of
-sub-manifolds as defined in the previous section. Each of these
+submanifolds as defined in the previous section. Each of these
 manifolds may moreover be a foliation where each leaf corresponds to a
 stable pose of an object or to a grasp of an object by a
 gripper. The geometrical structure of the problem has been well
@@ -135,7 +135,7 @@ final pose. The final configuration of the robot is not specified. A
 simplifying assumption is the existence of a monotone solution, where each object is grasped at the most once and is moved from
 its initial pose to its final pose \cite{stilman2008planning},
 \cite{stilman2007manipulation}, \cite{srivastavaetal2014icra}, \cite{nieuwenhuisen2008effective},
-\cite{ota2004rearrangement}. They mostly use two-level methods
+\cite{ota2004rearrangement}. They mainly rely on two-level methods
 composed of a symbolic task planner and of a motion
 planner~\cite{cambon:hal-01976081}, \cite{KaeLoz2013}, \cite{LozKae2014}, \cite{18-toussaint-RSS}.
 
@@ -192,11 +192,11 @@ The most common joints with their respective configuration spaces are
 \item \textit{planar} joint with configuration space $SE(2)$,
 \item \textit{freeflyer} joint with configuration space $SE(3)$.
 \end{itemize}
-$SO(n)$ and $SE(n)$ respectively stand for \textit{special orthogonal group} and \textit{special Euclidean group}. They represent the group of rotations and the group of rigid-body transformations in $\reals^n$.
+$SO(n)$ and $SE(n)$ stand for \textit{special orthogonal group} and \textit{special Euclidean group} respectively. They represent the group of rotations and the group of rigid-body transformations in $\reals^n$.
 
 \subsection{Lie groups}
 
-The joint configuration spaces enumerated in the previous paragraph: $\mathbb{R}^n$, $SO(n)$, and $SE(n)$ are all Lie groups. The group operation is $+$ for $\mathbb{R}^n$, and composition denoted as $"."$ for $SE(n)$. We refer to~{\color{blue}Murray \textit{et al}}~\cite[Appendix A]{LMS94} for a thorough definition of Lie groups. Here we detail only properties that are useful for the following developments.
+The joint configuration spaces listed in the previous paragraph: $\mathbb{R}^n$, $SO(n)$, and $SE(n)$ are all Lie groups. The group operation is $+$ for $\mathbb{R}^n$, and composition denoted as $"."$ for $SE(n)$. We refer to~{\color{blue}Murray \textit{et al}}~\cite[Appendix A]{LMS94} for a thorough definition of Lie groups. Here we detail only those properties that are useful for the following developments.
 
 For any Lie group $\liegroup$ with neutral element $\neutral$, the tangent space at the neutral element $T_{\neutral}\liegroup$ of the group naturally maps to the tangent space at any point of the group. This means that any \textit{velocity} $\mathbf{v}\in T_{\neutral}\liegroup$ uniquely defines
 \begin{enumerate}
@@ -213,7 +213,7 @@ Item 3 is called the exponential map of $\liegroup$ and is denoted by $\exp$.
   $$
   \forall \theta\in\reals,\  \exp(\theta) = \theta.
   $$
-\item $SE(3)$: an element $g$ of $SE(3)$ can be seen as the position of a moving frame in a fixed reference frame. A point $\mathbf{x}\in\reals^3$ is mapped to $g(\mathbf{x})$. Note that $\mathbf{x}$ is also the coordinate vector of $g(\mathbf{x})$ in the moving frame $g$. If $\mathbf{v}$, $\omega$ are a linear and angular velocities at the origin, $(\mathbf{v},\omega)$ is \textit{transported} to $g$
+\item $SE(3)$: an element $g$ of $SE(3)$ can be seen as the position of a moving frame in a fixed reference frame. A point $\mathbf{x}\in\reals^3$ is mapped to $g(\mathbf{x})$. Note that $\mathbf{x}$ is also the coordinate vector of $g(\mathbf{x})$ in the moving frame $g$. If $\mathbf{v}$, $\omega$ are linear and angular velocities at the origin, $(\mathbf{v},\omega)$ is \textit{transported} to $g$
   as the same linear and angular velocities expressed in the moving frame. In other words, if
   \begin{equation}\label{eq:homogeneous matrix}
   M=\left(\begin{array}{ll} R & \mathbf{t}\\ 0 & 1\end{array}\right)
@@ -222,7 +222,7 @@ Item 3 is called the exponential map of $\liegroup$ and is denoted by $\exp$.
   representing $g$, and $(\mathbf{v},\mathbf{\omega})$ is a velocity in $T_{I_3}SE(3)$, the velocity \textit{transported} to $g$ corresponds to linear and angular velocities $R\mathbf{v}$ and $R\omega$ of the moving frame.
   Integral curves of the vector field mentioned in item 2 above correspond to screw motions of constant velocity expressed in the moving frame.
 \end{itemize}
-$SE(2)$, $SO(3)$, and $SO(2)$ are (or are isomorphic to) subgroups of $SE(3)$ and follow the same geometrical interpretation.
+$SE(2)$, $SO(3)$, and $SO(2)$ are subgroups of $SE(3)$ and follow the same geometrical interpretation.
 
 \subsubsection{Vector representations}
 Each Lie group element is represented by a vector. Rotations are represented by
@@ -321,11 +321,11 @@ Cartesian products of Lie groups are represented by Class \href{https://gepettow
   \end{itemize}
 %% end impl
 
-\section{nonlinear constraints and solvers}\label{sec:constraints}
+\section{Nonlinear constraints and solvers}\label{sec:constraints}
 
 Some tasks require the robot to enforce some nonlinear constraints. Foot contact on the ground for a humanoid robot, center of mass projection on a horizontal plane, gaze constraint are a few examples.
 
-\subsection{nonlinear constraints}
+\subsection{Nonlinear constraints}
 
 \begin{definition}\textbf{nonlinear constraint.} A nonlinear constraint is defined by a {\color{blue} piece-wise} differentiable mapping $h$ from $\CS$ to a vector space $\reals^m$ and is written
 \begin{equation}\label{eq:constraint}
@@ -337,7 +337,7 @@ $$
 h(\conf) \triangleq \left(\begin{array}{c} h_1(\conf) \\ \vdots \\ h_k(\conf)
 \end{array}\right).
 $$
-It may be useful to use a non-zero right hand side for the same function $h$. We define for that parameterized nonlinear constraints.
+It may be useful to use a non-zero right hand side for the same function $h$. For that we define parameterized nonlinear constraints.
 \begin{definition}\textbf{Parameterized nonlinear constraint.}
   A parameterized nonlinear constraint is defined by a {\color{blue} piece-wise} differentiable mapping $h$ from $\CS$ to a vector space $\reals^m$ and by a vector $\mathbf{h}_0$ of $\reals^m$ and is written
   $$
@@ -353,11 +353,11 @@ It may be useful to use a non-zero right hand side for the same function $h$. We
 In this \paper, we will make use of the term Jacobian in a generalized way.
 If $h$ is a {\color{blue} piece-wise} differentiable function from a Lie group $\liegroup_1$ to a Lie group $\liegroup_2$, and $\conf_1$ an element of $\liegroup_1$, we will denote by $\frac{\partial h}{\partial\conf}(\conf_1)$ the operator that maps velocities in $T_{\conf_1}\liegroup_1$ to the velocity in $T_{h(\conf_1)}\liegroup_2$ \textit{transported by} $h$\footnote{If $\dconf\in T_{\conf_1}\liegroup_1$ is a velocity along a time parameterized curve $\gamma$, $\frac{\partial h}{\partial\conf}(\conf_1)\dconf$ is the velocity along Curve $h(\gamma)$.}.
 
-This operator is represented by a matrix with $nv_2$ lines and $nv_1$ columns, where $nv_1$ and $nv_2$ are the dimensions of the tangent spaces of respectively $\liegroup_1$ and $\liegroup_2$.
+This operator is represented by a matrix with $nv_2$ lines and $nv_1$ columns, where $nv_1$ and $nv_2$ are the dimensions of the tangent spaces of $\liegroup_1$ and $\liegroup_2$ respectively.
 
-\subsection{Newton based solver}
+\subsection{Newton-based solver}
 
-It is sometimes useful to produce a configuration $\conf$ that satisfies a constraint (or a set of constraints) of type~(\ref{eq:constraint}) from a configuration $\conf_0$ that does not. This action is called the \textit{projection of $\conf_0$ onto the sub-manifold defined by the constraint} and is performed by a Gauss-Newton solver~\cite[Chapter~10]{NoceWrig06} that iteratively linearizes the constraint as follows:
+It is sometimes useful to produce a configuration $\conf$ that satisfies a constraint (or a set of constraints) of type~(\ref{eq:constraint}) from a configuration $\conf_0$ that does not. This action is called the \textit{projection of $\conf_0$ onto the submanifold defined by the constraint} and is performed by a Gauss-Newton solver~\cite[Chapter~10]{NoceWrig06} that iteratively linearizes the constraint as follows:
 $$
 h(\conf_{i+1}) \approx h(\conf_i) + \frac{\partial h}{\partial \conf}(\conf_{i})(\conf_{i+1}{\color{blue}\ominus}\conf_i) = 0
 $$
@@ -388,7 +388,7 @@ Note that to define a new constraint, the user needs to derive class \href{https
 
 \subsection{Explicit constraints}
 
-In manipulation planning applications, in which robots manipulate objects, once an object is grasped, the position of the object can be explicitly computed from the configuration of the robot. In this case, some configuration variables of the system depend on other configuration variables:
+In manipulation planning applications in which robots manipulate objects, once an object is grasped, the position of the object can be explicitly computed from the configuration of the robot. In this case, some configuration variables of the system depend on other configuration variables:
 $$
 \conf=(\conf_{rob},\conf_{obj})\in\CS,\ \ \ \ \conf_{obj} = g_{grasp}(\conf_{rob}).
 $$
@@ -411,7 +411,7 @@ If $\conf\in\CS$ is a configuration, we denote by $\conf_{I}\in\reals^{|I|}$ the
 Similarly, if
 \begin{itemize}
 \item $m$ and $n$ are two integers,
-\item $M$ and $N$ are two subsets of respectively $I_{m}$ and $I_{n}$,
+\item $M$ and $N$ are two subsets of $I_{m}$ and $I_{n}$ respectively,
 \item $J$ is a matrix with $m$ rows and $n$ columns,
 \end{itemize}
 we denote by
@@ -458,7 +458,7 @@ satisfying the following properties:
 
 \subsection{Solver by substitution}
 
-To optimize constraint resolution, we perform variable substitution whenever possible in order to reduce both the number of variables and the dimension of the resulting implicit constraint. Here we describe the method first published in~{\color{blue}Mirabel \textit{et al}}~\cite{MirLam2018}. Unlike in the former paper, the description we give in Algorithm~\ref{alg:ExplicitConstraintSet} is closer to the real implementation. Some links to the source code are indeed provided in the algorithm description.
+To optimize constraint resolution, we perform variable substitution whenever possible in order to reduce the number of variables as well as the dimension of the resulting implicit constraint. Here we describe the method first published in~{\color{blue}Mirabel \textit{et al}}~\cite{MirLam2018}. Unlike in the former paper, the description we give in Algorithm~\ref{alg:ExplicitConstraintSet} is closer to the real implementation. Some links to the source code are indeed provided in the algorithm description.
 \begin{algorithm}
   \begin{algorithmic}[1]
     \Procedure{initializeSolver}{}
@@ -489,7 +489,7 @@ To optimize constraint resolution, we perform variable substitution whenever pos
     \State{\Return{success}}
     \EndFunction
   \end{algorithmic}
-  \caption{Insertion of an explicit constraint in the solver. Line 1 is called once at initialization of the solver. $explicit$ is a vector that stores the constraints that are successfully added to the solver. $nc$ is the size of the latter. $args$ is an array that stores for each configuration variable, the index in $explicit$ of the constraint that computes this configuration variable, -1 if no constraint computes the index. Procedure \href{https://github.com/humanoid-path-planner/hpp-constraints/blob/2555dfec945575f824bd973c30c5c13ec3b67645/src/explicit-constraint-set.cc\#L144}{ADD} tests whether explicit constraint $E$ is compatible with the previously inserted constraints. Line 6 checks whether any output variable of $E$ is already computed by a previous explicit constraint. If so the procedure returns failure and $E$ is not inserted. The Loop at line 9 recursively checks that any element of $out$ is not an input variable of a previously inserted constraint. If the loop ends without returning failure,  line 18 stores that elements of $out$ are computed by $E$ and $E$ is inserted in the vector of constraints. Function \href{https://github.com/humanoid-path-planner/hpp-constraints/blob/2555dfec945575f824bd973c30c5c13ec3b67645/src/explicit-constraint-set.cc\#L301}{computeOrder} at line 20 recursively computes the order in which the explicit constraints are evaluated, following the rule that the input of a constraint should be evaluated before the output.}
+  \caption{Insertion of an explicit constraint in the solver. Line 1 is called once at initialization of the solver. $explicit$ is a vector that stores the constraints that are successfully added to the solver. $nc$ is the size of the latter. $args$ is an array that, for each configuration variable stores the index in $explicit$ of the constraint that computes this configuration variable, -1 if no constraint computes the index. Procedure \href{https://github.com/humanoid-path-planner/hpp-constraints/blob/2555dfec945575f824bd973c30c5c13ec3b67645/src/explicit-constraint-set.cc\#L144}{ADD} tests whether explicit constraint $E$ is compatible with the previously inserted constraints. Line 6 checks whether any output variable of $E$ is already computed by a previous explicit constraint. If so the procedure returns failure and $E$ is not inserted. The Loop at line 9 recursively checks that any element of $out$ is not an input variable of a previously inserted constraint. If the loop ends without returning failure,  line 18 stores the information that elements of $out$ are computed by $E$ and $E$ is inserted in the vector of constraints. Function \href{https://github.com/humanoid-path-planner/hpp-constraints/blob/2555dfec945575f824bd973c30c5c13ec3b67645/src/explicit-constraint-set.cc\#L301}{computeOrder} at line 20 recursively computes the order in which the explicit constraints are evaluated, following the rule that the input of a constraint should be evaluated before the output.}
   \label{alg:ExplicitConstraintSet}
 \end{algorithm}
 Once several compatible explicit constraints have been inserted in the solver,
@@ -536,7 +536,7 @@ with $J_i$ obtained by expression~(\ref{eq:jacobian-explicit}) after replacing $
 
 $\frac{\partial f}{\partial\conf_{in}}$ is then obtained by extracting from $J$ block $out\times in$.
 
-Let us now detail the iterative computation of~(\ref{eq:jacobian-product}). Let $J$ be the product of of $J_j$ for $j$ from $nc$ to $i+1$.
+Let us now detail the iterative computation of~(\ref{eq:jacobian-product}). Let $J$ be the product of $J_j$ for $j$ from $nc$ to $i+1$.
 Note that if $J_i$ and $J$ are square matrices of size $nv$, of the form~(\ref{eq:jacobian-explicit}), $J_i.J$ can be computed by block as follows:
 \begin{eqnarray*}
   (J_{i}.J)_{in_{i}\times I_{nv}} &=& J_{in_{i}\times I_{nv}}\\
@@ -556,9 +556,9 @@ The solver by substitution described in this section is implemented by Class \hr
 
 \subsection{Constrained path}
 
-Now that we are able to project configurations onto sub-manifolds defined by numerical constraints -- up to some numerical threshold, we need to define paths on such sub-manifolds. The usual way of doing so is by discretizing the path and projecting each sample configuration. The shortcoming is that it requires choosing a discretization step at path construction thus losing the continuous information of the path.
+Now that we are able to project configurations onto submanifolds defined by numerical constraints -- up to some numerical threshold, we need to define paths on such submanifolds. The usual way of doing so is by discretizing the path and projecting each sample configuration. The shortcoming is that it requires choosing a discretization step at path construction thus losing the continuous information of the path.
 
-Instead, we propose an alternative architecture where paths store the constraints they are subject to and apply the constraints at path evaluation {\color{blue}(\textit{i.e.} when computing the configuration at a given parameter)}. Let $P\in C^1([0,T],\CS)$ be a path without constraint defined on an interval $[0,T]$, and $\mathbf{proj}$ a projector onto a sub-manifold defined by numerical constraints (\textit{i.e.} an instance of\\ \href{https://gepettoweb.laas.fr/hpp/hpp-constraints/doxygen-html/classhpp_1_1constraints_1_1solver_1_1BySubstitution.html}{\texttt{SolverBySubstitution}}).
+Instead, we propose an alternative architecture where paths store the constraints they are subject to and apply the constraints at path evaluation {\color{blue}(\textit{i.e.} when computing the configuration at a given parameter)}. Let $P\in C^1([0,T],\CS)$ be a path without constraint defined on an interval $[0,T]$, and $\mathbf{proj}$ a projector onto a submanifold defined by numerical constraints (\textit{i.e.} an instance of\\ \href{https://gepettoweb.laas.fr/hpp/hpp-constraints/doxygen-html/classhpp_1_1constraints_1_1solver_1_1BySubstitution.html}{\texttt{SolverBySubstitution}}).
 
 Then the corresponding constrained path $\tilde{P}$ is defined on the same interval by
 $$
@@ -574,7 +574,7 @@ classes \href{https://gepettoweb.laas.fr/hpp/hpp-core/doxygen-html/classhpp_1_1c
 
 \section{Manipulation Problem}\label{sec:manipulation-problem}
 
-The previous sections have presented how we model kinematic chains, configurations and velocities for a given robotic system, how configurations and paths can be projected onto a sub-manifold of the configuration space defined by numerical constraints.
+The previous sections have presented how we model kinematic chains, configurations and velocities for a given robotic system and how configurations and paths can be projected onto a submanifold of the configuration space defined by numerical constraints.
 
 In this section, we will use these notions to represent a robotic manipulation problem.
 
@@ -614,7 +614,7 @@ We will now provide precise definitions for grippers, grasps and stable contact 
 $$
 \CS = \CS_{r_1}{\color{blue}\times\cdots}\times\CS_{r_{nr}}\times SE(3)^{no}
 $$
-where $nr$ is the number of robots, $no$ is the number of objects, $\CS_{r_i},\ i\in\{1,...,nr\}$ is the configuration space of robot $r_i$.
+where $nr$ is the number of robots, $no$ the number of objects, $\CS_{r_i},\ i\in\{1,...,nr\}$ is the configuration space of robot $r_i$.
 \begin{definition}\textbf{Gripper.}\label{def:gripper}
   A \emph{gripper} $\gripper$ is defined as a frame attached to the link of a robot. $\gripper(\conf),\ \conf\in\CS$ denotes the pose of the frame when the system is in configuration $\conf$.
 \end{definition}
@@ -682,13 +682,13 @@ The first three components of $\bar{h}(\conf)$ in equation~(\ref{eq:barh}) corre
     h_{comp} &= (\bar{h}_4,\bar{h}_5,\bar{h}_6).
   \end{align*}
 \end{itemize}
-If $\conf_0$ is a configuration satisfying the grasp constraint: $h(\conf_0)$=0, then the sub-manifold defined by
+If $\conf_0$ is a configuration satisfying the grasp constraint: $h(\conf_0)$=0, then the submanifold defined by
 $$
 \left\{\conf\in\CS,\ \ h(\conf)=0\ \ h_{comp}(\conf) =  h_{comp}(\conf_0)\right\}
 $$
 contains all the configurations that are reachable from $\conf_0$ while maintaining the grasp. Note that this representation of relative pose constraints has been used in the Stack of Task software, although it is not described in the corresponding paper~\cite{SoT}. It is different from Task Space Regions \cite{berenson2011} where open domains of $SE(3)$ are defined.
 
-\subsection{Stable Contact pose}\label{subsec:placement}
+\subsection{Stable contact pose}\label{subsec:placement}
 
 \begin{figure}
   \begin{center}
@@ -701,10 +701,10 @@ contains all the configurations that are reachable from $\conf_0$ while maintain
 When an object is not grasped, it should lie in a stable pose. There are two simple methods to enforce that:
 \begin{enumerate}
 \item defining virtual grippers in the environment and virtual handles on the object, implicitly defines a discrete set of poses,
-\item defining a virtual gripper on a horizontal plane and a virtual handle on the object, and using a grasp with flags $(\false,\false,\true,\true,\true,\false)$ constrains the object to move on an infinite horizontal plane.
+\item defining a virtual gripper on a horizontal plane and a virtual handle on the object, and using a grasp with flags $(\false,\false,\true,\true,\true,\false)$ constrains the object to move along an infinite horizontal plane.
 \end{enumerate}
 
-Here we propose a third method that enables users to define contact surfaces in a more flexible way. In this aim, we denote by:
+Here we propose a third method that enables users to define contact surfaces in a more flexible way. To this end, we denote by:
 \begin{itemize}
 \item $(o_i)_{i\in I}$ a set of convex polygons attached to an object,
 \item $(f_j)_{j\in J}$ a set of convex polygons attached to the environment or to a mobile part of a robot that can receive objects (mobile robot for example),
@@ -739,14 +739,14 @@ h(\conf) = \left\{\begin{array}{lll}(\bar{h}_1,0,0,\bar{h}_5,\bar{h}_6)&
 \end{equation}
 It is straightforward that this function vanishes if and only if two convex polygons $o_i$ and $f_j$ are in contact and if $C_{o_i}$ is inside $f_j$.
 
-As for grasps, we need to define a parameterized complement constraint for the contact constraint in order to specify the sub-manifold of configurations that are reachable from one configuration while keeping the object in a constant stable pose. The naive way consists in defining
+As for grasps, we need to define a parameterized complement constraint for the contact constraint in order to specify the submanifold of configurations reachable from one configuration while keeping the object in a constant stable pose. The naive way consists in defining
 $$
 h_{comp}(\conf) = \left\{\begin{array}{lll}(\bar{h}_2,\bar{h}_3,\bar{h}_4)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ inside } f_j\\
 (0,0,\bar{h}_4)&
 \mbox{if} & P(C_{o_i},f_j)\mbox{ outside } f_j\end{array}\right.
 $$
-$\bar{h}_2$, $\bar{h}_3$, $\bar{h}_4$ respectively represent the translation in $y-z$ plane and the rotation around $x$-axis of frame $o_i$ with respect to frame $f_j$. Let $\conf_0$ be a configuration such that $h(\conf_0)=0$. The sub-manifold defined by
+$\bar{h}_2$, $\bar{h}_3$, $\bar{h}_4$ respectively represent the translation in $y-z$ plane and the rotation around $x$-axis of frame $o_i$ with respect to frame $f_j$. Let $\conf_0$ be a configuration such that $h(\conf_0)=0$. The submanifold defined by
 \begin{equation}\label{eq:stable-pose}
 \left\{\conf\in\CS,\ \ h(\conf)=0\ \ h_{comp}(\conf) = h_{comp}(\conf_0) \right\}
 \end{equation}
@@ -766,7 +766,7 @@ where
 \item $i$ and $j$ are the indices that minimize distance~(\ref{eq:contact-distance}),
 \item $M$ is a positive real number such that for any $\kappa\in J$, all vertices of $f_\kappa$ are included in the disk of center $C_{f_\kappa}$ and of radius $M$.
 \end{itemize}
-With this definition, the sub-manifold defined by~(\ref{eq:stable-pose}), (\ref{eq:convex-shape-contact}), (\ref{eq:convex-shape-contact-complement}) contains configurations where the object is in a unique stable pose. The polygon indices $i$ and $j$, as well as their relative position can indeed be recovered from~(\ref{eq:convex-shape-contact-complement}):
+With this definition, the submanifold defined by~(\ref{eq:stable-pose}), (\ref{eq:convex-shape-contact}), (\ref{eq:convex-shape-contact-complement}) contains configurations where the object is in a unique stable pose. The polygon indices $i$ and $j$, as well as their relative position can indeed be recovered from~(\ref{eq:convex-shape-contact-complement}):
 \begin{align*}
   i &= \left\lfloor\frac{\bar{h}_3}{2M} + \frac{1}{2}\right\rfloor\\
   j &= \left\lfloor\frac{\bar{h}_2}{2M} + \frac{1}{2}\right\rfloor\\
@@ -808,9 +808,9 @@ are created together and registered using method\\
 \texttt{registerConstraint} of Class
 \href{https://gepettoweb.laas.fr/hpp/hpp-manipulation/doxygen-html/classhpp_1_1manipulation_1_1graph_1_1Graph.html}{\texttt{ConstraintGraph}}.
 
-\subsection{Constraint Graph}\label{subsec:constraint graph}
+\subsection{Constraint graph}\label{subsec:constraint graph}
 
-According to Definition~\ref{def:manipulation-problem}, the set of admissible configurations of a manipulation problem is the union of sub-manifolds of the configuration space of the system. Each sub-manifold is defined by grasp and/or stable contact constraints. We call each sub-manifold a \textit{state} of the problem.
+According to Definition~\ref{def:manipulation-problem}, the set of admissible configurations of a manipulation problem is the union of submanifolds of the configuration space of the system. Each submanifold is defined by grasp and/or stable contact constraints. We call each submanifold a \textit{state} of the problem.
 
 A state can be defined by a subset of active grasps, any object not grasped being in a stable contact pose. Let $\ngrippers$, $\nhandles$, and $\nobjects$ respectively denote the number of grippers, handles, and objects.
 
@@ -995,7 +995,7 @@ Table~\ref{tab:state-constraints} indicates which constraints are active for eac
     \State{$\transition_1$.\SETCONSTRAINTS(\Call{$\transition$.{\scriptsize CONSTRAINTS}})}
     \EndFunction
   \end{algorithmic}
-  \caption{Method \CREATESTATE builds the constraints relative to a state: one grasp constraint for each grasp, and one placement constraint for each object non grasped. \CREATETRANSITION builds the constraints relative to a transition: the constraints of the initial state (with the fewest grasps) and their complements.}
+  \caption{Method \CREATESTATE builds the constraints relative to a state: one grasp constraint for each grasp, and one placement constraint for each object not grasped. \CREATETRANSITION builds the constraints relative to a transition: the constraints of the initial state (with the fewest grasps) and their complements.}
   \label{algo:createStateAndTransition}
 \end{algorithm}
 
@@ -1025,9 +1025,9 @@ This method picks a random configuration (line 6) and for each connected compone
 \item function \TRYCONNECTNEWNODES calls method \CONNECT between all pairs of new nodes,
 \item function \TRYCONNECTTOROADMAP tries to connect each new node to the nearest nodes in other connected components of the roadmap also using function \CONNECT.
 \end{enumerate}
-Function \CONNECT attempts to connect two configurations in two states. First, it checks whether there exists a transition between the states. If so, it checks that the right hand side of the transition parameterized constraints is the same for both configurations (up to the error threshold). Then it returns the linear interpolation between the configurations, projected onto the sub-manifold defined by the transition constraints. If the path is in collision {\color{blue}or discontinuous}, only the {\color{blue}continuous} collision-free part at the beginning of the path is returned.
+Function \CONNECT attempts to connect two configurations in two states. First, it checks whether there exists a transition between the states. If so, it checks that the right hand side of the parameterized constraints of the transition is the same for both configurations (up to the error threshold). Then it returns the linear interpolation between the configurations, projected onto the submanifold defined by the transition constraints. If the path is in collision {\color{blue}or discontinuous}, only the {\color{blue}continuous} collision-free part at the beginning of the path is returned.
 
-Function \EXTEND attempts to generate a path from a configuration in a state to another state following a random transition. Similarly as for function \CONNECT, the path is projected onto the sub-manifold defined by the transition constraints. The end configuration is obtained by applying to the random configuration the constraints of the transition and of the goal state.
+Function \EXTEND attempts to generate a path from a configuration in a state to another state following a random transition. Similarly as for function \CONNECT, the path is projected onto the submanifold defined by the transition constraints. The end configuration is obtained by applying to the random configuration the constraints of the transition and of the goal state.
 \begin{algorithm}
   \begin{algorithmic}[1]
     \Function{initializeRoadmap}{$\conf_{init}$,$\conf_{goal}$}
@@ -1134,7 +1134,7 @@ Function \EXTEND attempts to generate a path from a configuration in a state to 
   \label{fig:MRRT-extension}
 \end{figure}
 
-In this section, the algorithm described in the previous section is depicted with two examples. Figure~\ref{fig:MRRT-extension} shows function \EXTEND defined in the previous section on the example of Figure~\ref{fig:2ur3-cylinder}.
+In this section, the algorithm described in the previous section is depicted with two examples. Figure~\ref{fig:MRRT-extension} shows function \EXTEND defined in the previous section applied to the example of Figure~\ref{fig:2ur3-cylinder}.
 The system considered is
 composed of two robots and a cylinder with two handles. The picture at the top displays
 $\conf_{rand}$. The picture in the middle displays $\conf_{near}$ that belongs to state
@@ -1305,13 +1305,13 @@ We denote by
 
 We replace the transitions of the constraint graph defined in
 Section~\ref{subsec:constraint graph} by a sequence of intermediate
-states and transitions as follows: given
+states and transitions: given
 Definition~\ref{def:neighboring-states}, if two states $\state_1$
 and $\state_2$ are adjacent to each other, one of them contains an additional grasp with
 respect to the other. Without loss of generality, consider that
 $\state_2$ contains the additional grasp $\grasp{\gripper_i}{\handle_j}$,
 $i\in\{1,\cdots\ngrippers\}$, $j\in\{1,\cdots\nhandles\}$. Let us denote by
-$\object{}$ the object handle $\handle_j$ belongs to. Then either
+$\object{}$ the object to which handle $\handle_j$ belongs. Then either
 \begin{enumerate}
 \item $\object{}$ is already grasped in state $\state_1$, or
 \item $\object{}$ is in placement in  state $\state_1$.
@@ -1351,7 +1351,7 @@ In case 2, we replace the transitions between $\state_1$ and $\state_2$ by three
 \subsubsection{Construction of a path along a waypoint transition} Function
 {\scriptsize EXTEND} in Algorithm~\ref{algo:M-RRT} builds a path along a
 transition from an initial configuration by projecting the configuration
-onto the sub-manifold defined by the goal state constraints and by the
+onto the submanifold defined by the goal state constraints and by the
 transition constraints. The right hand side of the transition constraint is
 first initialized with the initial configuration.
 
@@ -1442,7 +1442,7 @@ on each other. The main packages are the following:
 \item \texttt{hpp-constraints} a library that implements numerical constraints
   and solvers,
 \item \texttt{hpp-core} a library that implements most of the concepts relative
-  to motion planning. The main features are
+  to motion planning. The main features are:
   \begin{itemize}
   \item abstraction of paths in configuration spaces and some implementations,
   \item abstraction of path planning and path optimization and some implementations,
@@ -1494,7 +1494,7 @@ In this section, we report on several experimental results obtained
 with HPP software on constrained motion planning and on manipulation
 planning problems. The raw data can be found in
 \href{https://github.com/humanoid-path-planner/hpp_benchmark/tree/v4.10.0/2020-07-23}{\texttt{hpp\_benchmark}} package. Here we only present a few test cases.
-The benchmarks are run 20 times each on an Intel Core i7 at 2.60 GHz, with {\color{blue}32 Gigabytes of RAM and 3 Gigabytes of cache memory}. For each test case, we report the minimum, maximum, mean and standard deviation of the time of computation on the one hand, and of the number of nodes in the roadmap built to solve the problem on the other.
+The benchmarks are run 20 times each on an Intel Core i7 at 2.60 GHz, with {\color{blue}32 Gigabytes of RAM and 3 Gigabytes of cache memory}. For each test case, we report the minimum, maximum, mean and standard deviation of the time of computation on the one hand, and of the number of nodes in the roadmap built to solve the problem, on the other.
 
 \subsubsection{Constrained motion planning}
 
@@ -1658,10 +1658,10 @@ the system needs to perform:
 \end{enumerate}
 From this sequence of actions, the sequence of states visited is
 computed and only those states (nine in total) are built in the
-constraint graph. Then, a sequence of sub-goals in the successive
-states is computed, in such a way that each sub-goal is accessible by
+constraint graph. Then, a sequence of subgoals in the successive
+states is computed, in such a way that each subgoal is accessible by
 the previous one (on the same leaf of the corresponding transition
-foliation). The sub-goals are then linked by running a constrained visibility
+foliation). The subgoals are then linked by running a constrained visibility
 PRM algorithm \cite{SimLauNis00} on each leaf. The python code can be found
 at \href{https://github.com/humanoid-path-planner/hpp_benchmark/blob/master/2020-07-23/construction-set/script.py}{github.com}.
 
